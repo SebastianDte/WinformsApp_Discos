@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Discos
 {
-    public partial class Form1 : Form
+    public partial class FrmDisco : Form
     {
-        public Form1()
+        public FrmDisco()
         {
             InitializeComponent();
+        }
+
+        private void FrmDisco_Load(object sender, EventArgs e)
+        {
+            DiscoNegocio negocio = new DiscoNegocio();
+            dgvDisco.DataSource = negocio.listar();
         }
     }
 }
