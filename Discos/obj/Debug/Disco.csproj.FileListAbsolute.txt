@@ -1,0 +1,7 @@
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Disco.csproj.AssemblyReference.cache
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.FrmDisco.resources
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.Properties.Resources.resources
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Disco.csproj.GenerateResource.cache
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Disco.csproj.CoreCompileInputs.cache
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.exe
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.pdb

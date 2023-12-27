@@ -8,3 +8,16 @@ C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\Discos.csproj.Generate
 C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\Discos.csproj.CoreCompileInputs.cache
 C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\Discos.exe
 C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\Discos.pdb
+C:\Users\wxyz2\Desktop\Discos-main\Discos\bin\Debug\Discos.exe.config
+C:\Users\wxyz2\Desktop\Discos-main\Discos\bin\Debug\Discos.exe
+C:\Users\wxyz2\Desktop\Discos-main\Discos\bin\Debug\Discos.pdb
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.csproj.AssemblyReference.cache
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.FrmDisco.resources
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.Properties.Resources.resources
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.csproj.GenerateResource.cache
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.csproj.CoreCompileInputs.cache
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.exe
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.pdb
+C:\Users\wxyz2\Desktop\Discos-main\Discos\obj\Debug\Discos.csproj.CopyComplete
+C:\Users\wxyz2\Desktop\Discos-main\Discos\bin\Debug\Dominio.dll
+C:\Users\wxyz2\Desktop\Discos-main\Discos\bin\Debug\Dominio.pdb
