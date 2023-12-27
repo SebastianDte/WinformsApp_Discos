@@ -10,35 +10,29 @@ namespace business
 {
     public class DiscoNegocio
     {
-        public List<Disco> listar()
+        public List<Disco> toList()
         {
-            List<Disco>lista = new List<Disco>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            List<Disco> list = new List<Disco>();
+            DataAccess dataAccess = new DataAccess();
             try
             {
-                conexion.ConnectionString = "server=.\\SQLEXPRESS;database=Discos_DB;integrated security=true;";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select titulo, FechaLanzamiento, CantidadCanciones,UrlImagenTapa,E.Descripcion as EstiloDescripcion,T.Descripcion as TipoEdicionDescripcion from Discos D,ESTILOS E,TIPOSEDICION T  where E.Id = D.IdEstilo and T.Id = D.IdTipoEdicion";
-                comando.Connection = conexion;
-                conexion.Open();
-                lector = comando.ExecuteReader();
-                while (lector.Read()) 
+                dataAccess.setConsultation("select titulo, FechaLanzamiento, CantidadCanciones,UrlImagenTapa,E.Descripcion as EstiloDescripcion,T.Descripcion as TipoEdicionDescripcion from Discos D,ESTILOS E,TIPOSEDICION T  where E.Id = D.IdEstilo and T.Id = D.IdTipoEdicion");
+                dataAccess.executeReading();
+                while (dataAccess.Reader.Read()) 
                 {
                     Disco aux = new Disco();
-                    aux.Titulo = (string)lector["Titulo"];
-                    aux.FechaDeLanzamiento = (DateTime)lector["FechaLanzamiento"];
-                    aux.CantidadDeCanciones = (int)lector["CantidadCanciones"];
-                    aux.UrlImagenTapa = (string)lector["UrlImagenTapa"];
+                    aux.Titulo = (string)dataAccess.Reader["Titulo"];
+                    aux.FechaDeLanzamiento = (DateTime)dataAccess.Reader["FechaLanzamiento"];
+                    aux.CantidadDeCanciones = (int)dataAccess.Reader["CantidadCanciones"];
+                    aux.UrlImagenTapa = (string)dataAccess.Reader["UrlImagenTapa"];
                     aux.Estilo = new Estilo();
-                    aux.Estilo.Descripcion = (string)lector["EstiloDescripcion"];
+                    aux.Estilo.Descripcion = (string)dataAccess.Reader["EstiloDescripcion"];
                     aux.TipoEdicion = new TipoEdicion();
-                    aux.TipoEdicion.Descripcion = (string)lector["TipoEdicionDescripcion"];
-                    lista.Add(aux);
+                    aux.TipoEdicion.Descripcion = (string)dataAccess.Reader["TipoEdicionDescripcion"];
+                    list.Add(aux);
                 }
-                conexion.Close();
-                return lista;
+                dataAccess.closeConecction();
+                return list;
             }
             catch (Exception ex)
             {
@@ -46,5 +40,27 @@ namespace business
                 throw ex;
             }
         }
+
+        public void add(Disco newDisk)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            try
+            {
+                dataAccess.setConsultation("insert into DISCOS (Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa) values ('" + newDisk.Titulo + "', '" + newDisk.FechaDeLanzamiento + "', " + newDisk.CantidadDeCanciones + ", '" + newDisk.UrlImagenTapa + "')");
+                dataAccess.ExecuteAction();
+
+
+               
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { dataAccess.closeConecction(); }
+        }
+            
+            
     }
 }

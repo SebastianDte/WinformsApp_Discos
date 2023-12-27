@@ -13,7 +13,7 @@ namespace Discos
 {
     public partial class FrmDisco : Form
     {
-        private List<Disco> listaDicos;
+        private List<Disco> diskList;
         public FrmDisco()
         {
             InitializeComponent();
@@ -22,10 +22,10 @@ namespace Discos
         private void FrmDisco_Load(object sender, EventArgs e)
         {
             DiscoNegocio negocio = new DiscoNegocio();
-            listaDicos = negocio.listar();
-            dgvDisco.DataSource = listaDicos;
+            diskList = negocio.toList();
+            dgvDisco.DataSource = diskList;
             dgvDisco.Columns["UrlImagenTapa"].Visible = false;
-            pxbDiscos.Load(listaDicos[0].UrlImagenTapa);
+            pxbDiscos.Load(diskList[0].UrlImagenTapa);
 
             
         }
@@ -33,11 +33,11 @@ namespace Discos
         private void dgvDisco_SelectionChanged(object sender, EventArgs e)
         {
             
-            Disco seleccionado = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagenTapa);
+            Disco selected = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+            uploadImage(selected.UrlImagenTapa);
         }
 
-        private void cargarImagen(string imagen)
+        private void uploadImage(string imagen)
         {
             try
             {
@@ -48,6 +48,12 @@ namespace Discos
 
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmNewDisk newDisk = new frmNewDisk();
+            newDisk.ShowDialog();
         }
     }
 }
