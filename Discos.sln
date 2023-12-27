@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discos", "Discos\Discos.csproj", "{9D073ABC-443F-4D8A-8CDA-E6F9558A6AA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "Discos\View.csproj", "{9D073ABC-443F-4D8A-8CDA-E6F9558A6AA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{ED206FE7-8B76-4E49-838A-44E1D3D4C75E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "business", "business\business.csproj", "{925FB92E-22B0-48F9-B7C1-7B548759E116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{ED206FE7-8B76-4E49-838A-44E1D3D4C75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED206FE7-8B76-4E49-838A-44E1D3D4C75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED206FE7-8B76-4E49-838A-44E1D3D4C75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{925FB92E-22B0-48F9-B7C1-7B548759E116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925FB92E-22B0-48F9-B7C1-7B548759E116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925FB92E-22B0-48F9-B7C1-7B548759E116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925FB92E-22B0-48F9-B7C1-7B548759E116}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

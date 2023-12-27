@@ -1,0 +1,9 @@
+C:\Users\wxyz2\Desktop\Discos\business\bin\Debug\business.dll
+C:\Users\wxyz2\Desktop\Discos\business\bin\Debug\business.pdb
+C:\Users\wxyz2\Desktop\Discos\business\bin\Debug\Dominio.dll
+C:\Users\wxyz2\Desktop\Discos\business\bin\Debug\Dominio.pdb
+C:\Users\wxyz2\Desktop\Discos\business\obj\Debug\business.csproj.AssemblyReference.cache
+C:\Users\wxyz2\Desktop\Discos\business\obj\Debug\business.csproj.CoreCompileInputs.cache
+C:\Users\wxyz2\Desktop\Discos\business\obj\Debug\business.csproj.CopyComplete
+C:\Users\wxyz2\Desktop\Discos\business\obj\Debug\business.dll
+C:\Users\wxyz2\Desktop\Discos\business\obj\Debug\business.pdb
