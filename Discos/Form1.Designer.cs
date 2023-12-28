@@ -40,28 +40,29 @@
             // dgvDisco
             // 
             this.dgvDisco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDisco.Location = new System.Drawing.Point(54, 366);
-            this.dgvDisco.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvDisco.Location = new System.Drawing.Point(36, 238);
             this.dgvDisco.Name = "dgvDisco";
             this.dgvDisco.RowHeadersWidth = 45;
-            this.dgvDisco.Size = new System.Drawing.Size(1012, 224);
+            this.dgvDisco.Size = new System.Drawing.Size(675, 146);
             this.dgvDisco.TabIndex = 0;
             this.dgvDisco.SelectionChanged += new System.EventHandler(this.dgvDisco_SelectionChanged);
             // 
             // pxbDiscos
             // 
-            this.pxbDiscos.Location = new System.Drawing.Point(336, 12);
+            this.pxbDiscos.Location = new System.Drawing.Point(224, 8);
+            this.pxbDiscos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pxbDiscos.Name = "pxbDiscos";
-            this.pxbDiscos.Size = new System.Drawing.Size(477, 324);
+            this.pxbDiscos.Size = new System.Drawing.Size(318, 211);
             this.pxbDiscos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pxbDiscos.TabIndex = 1;
             this.pxbDiscos.TabStop = false;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(336, 624);
+            this.btnAgregar.Location = new System.Drawing.Point(224, 406);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(98, 44);
+            this.btnAgregar.Size = new System.Drawing.Size(65, 29);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -69,33 +70,34 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(511, 624);
+            this.btnEliminar.Location = new System.Drawing.Point(341, 406);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(98, 44);
+            this.btnEliminar.Size = new System.Drawing.Size(65, 29);
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(715, 624);
+            this.btnModificar.Location = new System.Drawing.Point(477, 406);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(98, 44);
+            this.btnModificar.Size = new System.Drawing.Size(78, 29);
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             // 
             // FrmDisco
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 757);
+            this.ClientSize = new System.Drawing.Size(739, 486);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.pxbDiscos);
             this.Controls.Add(this.dgvDisco);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmDisco";
             this.Text = "Discos";
             this.Load += new System.EventHandler(this.FrmDisco_Load);

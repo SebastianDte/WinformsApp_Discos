@@ -48,19 +48,13 @@ namespace business
             try
             {
                 dataAccess.setConsultation("insert into DISCOS (Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa) values ('" + newDisk.Titulo + "', '" + newDisk.FechaDeLanzamiento + "', " + newDisk.CantidadDeCanciones + ", '" + newDisk.UrlImagenTapa + "')");
-                dataAccess.ExecuteAction();
-
-
-               
+                dataAccess.ExecuteAction();               
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally { dataAccess.closeConecction(); }
-        }
-            
-            
+        }        
     }
 }
