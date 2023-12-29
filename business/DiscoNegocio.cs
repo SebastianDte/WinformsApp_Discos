@@ -47,8 +47,10 @@ namespace business
 
             try
             {
-                dataAccess.setConsultation("insert into DISCOS (Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa) values ('" + newDisk.Titulo + "', '" + newDisk.FechaDeLanzamiento + "', " + newDisk.CantidadDeCanciones + ", '" + newDisk.UrlImagenTapa + "')");
-                dataAccess.ExecuteAction();               
+                dataAccess.setConsultation("insert into DISCOS (Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,idEstilo,IdTipoEdicion) values ('" + newDisk.Titulo + "', '" + newDisk.FechaDeLanzamiento + "', " + newDisk.CantidadDeCanciones + ", '" + newDisk.UrlImagenTapa + "',@idEstilo,@idTipoEdicion)");
+                dataAccess.setParameters("@idEstilo",newDisk.Estilo.Id);
+                dataAccess.setParameters("@idTipoEdicion", newDisk.TipoEdicion.Id);
+                dataAccess.ExecuteAction();           
             }
             catch (Exception ex)
             {

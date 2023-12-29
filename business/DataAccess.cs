@@ -58,6 +58,11 @@ namespace business
             }
         }
 
+        public void setParameters(string name,object value)
+        {
+            command.Parameters.AddWithValue(name, value);
+        }
+
         public void closeConecction()
         {
             if (reader != null)

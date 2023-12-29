@@ -35,7 +35,8 @@ namespace Discos
                 disk.FechaDeLanzamiento = dtpFechaLanzamiento.Value;
                 disk.CantidadDeCanciones = int.Parse(txtCantCanciones.Text);
                 disk.UrlImagenTapa = txtUrlImgTapa.Text;
-
+                disk.Estilo = (Estilo)cboEstilo.SelectedItem;
+                disk.TipoEdicion = (TipoEdicion)cboTipoEdicion.SelectedItem;
                 discoNegocio.add(disk);
                 MessageBox.Show("Agregado exisotsamente");
                 Close();
@@ -44,6 +45,24 @@ namespace Discos
             {
 
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmNewDisk_Load(object sender, EventArgs e)
+        {
+            EstiloNegocio estiloNegocio = new EstiloNegocio();
+            TipoEdicionNegocio tipoEdicionNegocio = new TipoEdicionNegocio();
+
+            try
+            {
+                cboEstilo.DataSource = estiloNegocio.toList();
+                cboTipoEdicion.DataSource = tipoEdicionNegocio.tolist();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }

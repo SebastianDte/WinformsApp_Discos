@@ -38,6 +38,10 @@
             this.txtUrlImgTapa = new System.Windows.Forms.TextBox();
             this.lblUrlImgTapa = new System.Windows.Forms.Label();
             this.dtpFechaLanzamiento = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboEstilo = new System.Windows.Forms.ComboBox();
+            this.cboTipoEdicion = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -83,7 +87,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(117, 260);
+            this.btnAceptar.Location = new System.Drawing.Point(114, 358);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(113, 48);
             this.btnAceptar.TabIndex = 6;
@@ -93,7 +97,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(266, 260);
+            this.btnCancelar.Location = new System.Drawing.Point(263, 358);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(121, 48);
             this.btnCancelar.TabIndex = 7;
@@ -119,16 +123,57 @@
             // 
             // dtpFechaLanzamiento
             // 
+            this.dtpFechaLanzamiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaLanzamiento.Location = new System.Drawing.Point(230, 88);
             this.dtpFechaLanzamiento.Name = "dtpFechaLanzamiento";
             this.dtpFechaLanzamiento.Size = new System.Drawing.Size(191, 26);
             this.dtpFechaLanzamiento.TabIndex = 10;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(56, 237);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Tipo de Edición";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(57, 201);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Estilo";
+            // 
+            // cboEstilo
+            // 
+            this.cboEstilo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstilo.FormattingEnabled = true;
+            this.cboEstilo.Location = new System.Drawing.Point(230, 201);
+            this.cboEstilo.Name = "cboEstilo";
+            this.cboEstilo.Size = new System.Drawing.Size(191, 28);
+            this.cboEstilo.TabIndex = 13;
+            // 
+            // cboTipoEdicion
+            // 
+            this.cboTipoEdicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoEdicion.FormattingEnabled = true;
+            this.cboTipoEdicion.Location = new System.Drawing.Point(230, 237);
+            this.cboTipoEdicion.Name = "cboTipoEdicion";
+            this.cboTipoEdicion.Size = new System.Drawing.Size(191, 28);
+            this.cboTipoEdicion.TabIndex = 14;
+            // 
             // frmNewDisk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 335);
+            this.ClientSize = new System.Drawing.Size(490, 446);
+            this.Controls.Add(this.cboTipoEdicion);
+            this.Controls.Add(this.cboEstilo);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpFechaLanzamiento);
             this.Controls.Add(this.txtUrlImgTapa);
             this.Controls.Add(this.lblUrlImgTapa);
@@ -142,6 +187,7 @@
             this.Name = "frmNewDisk";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Disco";
+            this.Load += new System.EventHandler(this.frmNewDisk_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +205,9 @@
         private System.Windows.Forms.TextBox txtUrlImgTapa;
         private System.Windows.Forms.Label lblUrlImgTapa;
         private System.Windows.Forms.DateTimePicker dtpFechaLanzamiento;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboEstilo;
+        private System.Windows.Forms.ComboBox cboTipoEdicion;
     }
 }
