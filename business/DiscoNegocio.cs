@@ -44,12 +44,16 @@ namespace business
         public void add(Disco newDisk)
         {
             DataAccess dataAccess = new DataAccess();
-
             try
             {
-                dataAccess.setConsultation("insert into DISCOS (Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,idEstilo,IdTipoEdicion) values ('" + newDisk.Titulo + "', '" + newDisk.FechaDeLanzamiento + "', " + newDisk.CantidadDeCanciones + ", '" + newDisk.UrlImagenTapa + "',@idEstilo,@idTipoEdicion)");
+                dataAccess.setConsultation("insert into DISCOS (Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,idEstilo,IdTipoEdicion) values (@Titulo,@FechaDeLanzamiento,@CantidadCanciones,@UrlImagenTapa,@idEstilo,@idTipoEdicion)");
+                dataAccess.setParameters("@Titulo", newDisk.Titulo);
+                dataAccess.setParameters("@FechaDeLanzamiento", newDisk.FechaDeLanzamiento);
+                dataAccess.setParameters("@CantidadCanciones", newDisk.CantidadDeCanciones);
+                dataAccess.setParameters("@UrlImagenTapa",newDisk.UrlImagenTapa);
                 dataAccess.setParameters("@idEstilo",newDisk.Estilo.Id);
                 dataAccess.setParameters("@idTipoEdicion", newDisk.TipoEdicion.Id);
+                
                 dataAccess.ExecuteAction();           
             }
             catch (Exception ex)

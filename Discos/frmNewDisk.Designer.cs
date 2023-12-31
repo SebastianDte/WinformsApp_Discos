@@ -123,7 +123,6 @@
             // 
             // dtpFechaLanzamiento
             // 
-            this.dtpFechaLanzamiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaLanzamiento.Location = new System.Drawing.Point(230, 88);
             this.dtpFechaLanzamiento.Name = "dtpFechaLanzamiento";
             this.dtpFechaLanzamiento.Size = new System.Drawing.Size(191, 26);
