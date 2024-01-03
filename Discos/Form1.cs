@@ -51,8 +51,13 @@ namespace Discos
             frmNewDisk newDisk = new frmNewDisk();
             newDisk.ShowDialog();
             cargar();
+<<<<<<< HEAD
 
         }
+=======
+        }
+
+>>>>>>> 755ea0cd4ac5a7921d8943351208d85e4bfcbc95
         private void cargar()
         {
             DiscoNegocio negocio = new DiscoNegocio();
