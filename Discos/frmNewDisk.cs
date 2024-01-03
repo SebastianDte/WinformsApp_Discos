@@ -65,5 +65,23 @@ namespace Discos
                 throw ex;
             }
         }
+
+        private void txtUrlImgTapa_Leave(object sender, EventArgs e)
+        {
+            uploadImage(txtUrlImgTapa.Text);
+
+        }
+        private void uploadImage(string imagen)
+        {
+            try
+            {
+                pxbDiscos.Load(imagen);
+            }
+            catch (Exception)
+            {
+
+                pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
+            }
+        }
     }
 }

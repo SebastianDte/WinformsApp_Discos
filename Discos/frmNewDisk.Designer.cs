@@ -42,6 +42,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cboEstilo = new System.Windows.Forms.ComboBox();
             this.cboTipoEdicion = new System.Windows.Forms.ComboBox();
+            this.pxbDiscos = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pxbDiscos)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -76,18 +78,18 @@
             this.txtTitulo.Location = new System.Drawing.Point(230, 46);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(191, 26);
-            this.txtTitulo.TabIndex = 3;
+            this.txtTitulo.TabIndex = 0;
             // 
             // txtCantCanciones
             // 
             this.txtCantCanciones.Location = new System.Drawing.Point(230, 126);
             this.txtCantCanciones.Name = "txtCantCanciones";
             this.txtCantCanciones.Size = new System.Drawing.Size(191, 26);
-            this.txtCantCanciones.TabIndex = 4;
+            this.txtCantCanciones.TabIndex = 2;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(114, 358);
+            this.btnAceptar.Location = new System.Drawing.Point(462, 304);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(113, 48);
             this.btnAceptar.TabIndex = 6;
@@ -97,7 +99,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(263, 358);
+            this.btnCancelar.Location = new System.Drawing.Point(611, 304);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(121, 48);
             this.btnCancelar.TabIndex = 7;
@@ -110,7 +112,8 @@
             this.txtUrlImgTapa.Location = new System.Drawing.Point(230, 162);
             this.txtUrlImgTapa.Name = "txtUrlImgTapa";
             this.txtUrlImgTapa.Size = new System.Drawing.Size(191, 26);
-            this.txtUrlImgTapa.TabIndex = 9;
+            this.txtUrlImgTapa.TabIndex = 3;
+            this.txtUrlImgTapa.Leave += new System.EventHandler(this.txtUrlImgTapa_Leave);
             // 
             // lblUrlImgTapa
             // 
@@ -126,7 +129,7 @@
             this.dtpFechaLanzamiento.Location = new System.Drawing.Point(230, 88);
             this.dtpFechaLanzamiento.Name = "dtpFechaLanzamiento";
             this.dtpFechaLanzamiento.Size = new System.Drawing.Size(191, 26);
-            this.dtpFechaLanzamiento.TabIndex = 10;
+            this.dtpFechaLanzamiento.TabIndex = 1;
             // 
             // label1
             // 
@@ -153,7 +156,7 @@
             this.cboEstilo.Location = new System.Drawing.Point(230, 201);
             this.cboEstilo.Name = "cboEstilo";
             this.cboEstilo.Size = new System.Drawing.Size(191, 28);
-            this.cboEstilo.TabIndex = 13;
+            this.cboEstilo.TabIndex = 4;
             // 
             // cboTipoEdicion
             // 
@@ -162,13 +165,23 @@
             this.cboTipoEdicion.Location = new System.Drawing.Point(230, 237);
             this.cboTipoEdicion.Name = "cboTipoEdicion";
             this.cboTipoEdicion.Size = new System.Drawing.Size(191, 28);
-            this.cboTipoEdicion.TabIndex = 14;
+            this.cboTipoEdicion.TabIndex = 5;
+            // 
+            // pxbDiscos
+            // 
+            this.pxbDiscos.Location = new System.Drawing.Point(462, 49);
+            this.pxbDiscos.Name = "pxbDiscos";
+            this.pxbDiscos.Size = new System.Drawing.Size(270, 216);
+            this.pxbDiscos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pxbDiscos.TabIndex = 13;
+            this.pxbDiscos.TabStop = false;
             // 
             // frmNewDisk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 446);
+            this.ClientSize = new System.Drawing.Size(759, 366);
+            this.Controls.Add(this.pxbDiscos);
             this.Controls.Add(this.cboTipoEdicion);
             this.Controls.Add(this.cboEstilo);
             this.Controls.Add(this.label3);
@@ -187,6 +200,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Disco";
             this.Load += new System.EventHandler(this.frmNewDisk_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pxbDiscos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +222,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboEstilo;
         private System.Windows.Forms.ComboBox cboTipoEdicion;
+        private System.Windows.Forms.PictureBox pxbDiscos;
     }
 }
