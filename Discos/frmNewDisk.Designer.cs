@@ -123,6 +123,7 @@
             this.lblUrlImgTapa.Size = new System.Drawing.Size(125, 20);
             this.lblUrlImgTapa.TabIndex = 8;
             this.lblUrlImgTapa.Text = "Imagen de Tapa";
+      
             // 
             // dtpFechaLanzamiento
             // 

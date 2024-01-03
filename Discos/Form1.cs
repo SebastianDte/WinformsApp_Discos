@@ -22,13 +22,11 @@ namespace Discos
         private void FrmDisco_Load(object sender, EventArgs e)
         {
             cargar();
-
-            
         }
 
         private void dgvDisco_SelectionChanged(object sender, EventArgs e)
         {
-            
+
             Disco selected = (Disco)dgvDisco.CurrentRow.DataBoundItem;
             uploadImage(selected.UrlImagenTapa);
         }
@@ -51,13 +49,7 @@ namespace Discos
             frmNewDisk newDisk = new frmNewDisk();
             newDisk.ShowDialog();
             cargar();
-<<<<<<< HEAD
-
         }
-=======
-        }
-
->>>>>>> 755ea0cd4ac5a7921d8943351208d85e4bfcbc95
         private void cargar()
         {
             DiscoNegocio negocio = new DiscoNegocio();
@@ -66,5 +58,5 @@ namespace Discos
             dgvDisco.Columns["UrlImagenTapa"].Visible = false;
             pxbDiscos.Load(diskList[0].UrlImagenTapa);
         }
-    }
+    } 
 }

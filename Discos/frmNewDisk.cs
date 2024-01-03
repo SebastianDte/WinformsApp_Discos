@@ -83,5 +83,7 @@ namespace Discos
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
         }
+
+        
     }
 }
