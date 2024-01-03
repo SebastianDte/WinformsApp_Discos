@@ -21,11 +21,7 @@ namespace Discos
 
         private void FrmDisco_Load(object sender, EventArgs e)
         {
-            DiscoNegocio negocio = new DiscoNegocio();
-            diskList = negocio.toList();
-            dgvDisco.DataSource = diskList;
-            dgvDisco.Columns["UrlImagenTapa"].Visible = false;
-            pxbDiscos.Load(diskList[0].UrlImagenTapa);
+            cargar();
 
             
         }
@@ -54,6 +50,16 @@ namespace Discos
         {
             frmNewDisk newDisk = new frmNewDisk();
             newDisk.ShowDialog();
+            cargar();
+        }
+
+        private void cargar()
+        {
+            DiscoNegocio negocio = new DiscoNegocio();
+            diskList = negocio.toList();
+            dgvDisco.DataSource = diskList;
+            dgvDisco.Columns["UrlImagenTapa"].Visible = false;
+            pxbDiscos.Load(diskList[0].UrlImagenTapa);
         }
     }
 }
