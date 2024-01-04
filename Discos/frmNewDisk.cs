@@ -14,10 +14,18 @@ namespace Discos
 {
     public partial class frmNewDisk : Form
     {
+        private Disco disk = null;
         public frmNewDisk()
         {
             InitializeComponent();
         }
+        public frmNewDisk(Disco select)
+        {
+            InitializeComponent();
+            this.disk = select;
+            Text = "Modificar Disco";
+        }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -26,20 +34,35 @@ namespace Discos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Disco disk = new Disco();
+            
             DiscoNegocio discoNegocio = new DiscoNegocio();
             
             try
             {
+                if (disk == null)
+                     disk = new Disco();
+                
+                
                 disk.Titulo = txtTitulo.Text;
                 disk.FechaDeLanzamiento = dtpFechaLanzamiento.Value;
                 disk.CantidadDeCanciones = int.Parse(txtCantCanciones.Text);
                 disk.UrlImagenTapa = txtUrlImgTapa.Text;
                 disk.Estilo = (Estilo)cboEstilo.SelectedItem;
                 disk.TipoEdicion = (TipoEdicion)cboTipoEdicion.SelectedItem;
-                discoNegocio.add(disk);
-                MessageBox.Show("Agregado exisotsamente");
+
+                if(disk.Id != 0 )
+                {
+                    discoNegocio.update(disk);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    discoNegocio.add(disk);
+                    MessageBox.Show("Agregado exisotsamente");
+                }
                 Close();
+
+                
             }
             catch (Exception ex)
             {
@@ -56,7 +79,21 @@ namespace Discos
             try
             {
                 cboEstilo.DataSource = estiloNegocio.toList();
+                cboEstilo.ValueMember = "Id";
+                cboEstilo.DisplayMember = "Descripcion";
                 cboTipoEdicion.DataSource = tipoEdicionNegocio.tolist();
+                cboTipoEdicion.ValueMember = "Id";
+                cboTipoEdicion.DisplayMember = "Descripcion";
+                if(disk!= null )
+                {
+                    txtTitulo.Text = disk.Titulo;
+                    dtpFechaLanzamiento.Value = disk.FechaDeLanzamiento;
+                    txtCantCanciones.Text = disk.CantidadDeCanciones.ToString();
+                    uploadImage(disk.UrlImagenTapa);
+                    cboEstilo.SelectedValue = disk.Estilo.Id;
+                    cboTipoEdicion.SelectedValue = disk.TipoEdicion.Id;
+                    
+                }
 
             }
             catch (Exception ex)

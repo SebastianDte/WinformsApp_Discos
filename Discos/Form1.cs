@@ -14,10 +14,12 @@ namespace Discos
     public partial class FrmDisco : Form
     {
         private List<Disco> diskList;
+        
         public FrmDisco()
         {
             InitializeComponent();
         }
+        
 
         private void FrmDisco_Load(object sender, EventArgs e)
         {
@@ -50,6 +52,15 @@ namespace Discos
             newDisk.ShowDialog();
             cargar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Disco select;
+            select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+            frmNewDisk updateDisk = new frmNewDisk(select);
+            updateDisk.ShowDialog();
+            cargar();
+        }
         private void cargar()
         {
             DiscoNegocio negocio = new DiscoNegocio();
@@ -57,6 +68,8 @@ namespace Discos
             dgvDisco.DataSource = diskList;
             dgvDisco.Columns["UrlImagenTapa"].Visible = false;
             pxbDiscos.Load(diskList[0].UrlImagenTapa);
+            dgvDisco.Columns["Id"].Visible = false;
         }
     } 
 }
+
