@@ -78,6 +78,7 @@ namespace business
                 dataAccess.setParameters("@IdEstilo", updateDisk.Estilo.Id);
                 dataAccess.setParameters("@IdTipoEdicion", updateDisk.TipoEdicion.Id);
                 dataAccess.setParameters("@id", updateDisk.Id);
+                dataAccess.ExecuteAction();
             }
             catch (Exception ex)
             {
