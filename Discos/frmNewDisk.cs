@@ -15,9 +15,12 @@ namespace Discos
     public partial class frmNewDisk : Form
     {
         private Disco disk = null;
+
+        
         public frmNewDisk()
         {
             InitializeComponent();
+            
         }
         public frmNewDisk(Disco select)
         {

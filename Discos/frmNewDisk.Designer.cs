@@ -49,7 +49,7 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Location = new System.Drawing.Point(38, 32);
+            this.lblTitulo.Location = new System.Drawing.Point(11, 9);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(35, 13);
@@ -59,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 57);
+            this.label2.Location = new System.Drawing.Point(11, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 13);
@@ -69,7 +69,7 @@
             // lblCantCanciones
             // 
             this.lblCantCanciones.AutoSize = true;
-            this.lblCantCanciones.Location = new System.Drawing.Point(37, 84);
+            this.lblCantCanciones.Location = new System.Drawing.Point(11, 99);
             this.lblCantCanciones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCantCanciones.Name = "lblCantCanciones";
             this.lblCantCanciones.Size = new System.Drawing.Size(117, 13);
@@ -78,26 +78,27 @@
             // 
             // txtTitulo
             // 
-            this.txtTitulo.Location = new System.Drawing.Point(172, 30);
-            this.txtTitulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTitulo.Location = new System.Drawing.Point(11, 28);
+            this.txtTitulo.Margin = new System.Windows.Forms.Padding(2);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(129, 20);
             this.txtTitulo.TabIndex = 0;
             // 
             // txtCantCanciones
             // 
-            this.txtCantCanciones.Location = new System.Drawing.Point(172, 82);
-            this.txtCantCanciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCantCanciones.Location = new System.Drawing.Point(11, 118);
+            this.txtCantCanciones.Margin = new System.Windows.Forms.Padding(2);
             this.txtCantCanciones.Name = "txtCantCanciones";
             this.txtCantCanciones.Size = new System.Drawing.Size(129, 20);
             this.txtCantCanciones.TabIndex = 2;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(327, 198);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAceptar.Location = new System.Drawing.Point(192, 248);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 31);
+            this.btnAceptar.Size = new System.Drawing.Size(81, 31);
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -105,8 +106,9 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(426, 198);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCancelar.Location = new System.Drawing.Point(311, 248);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(81, 31);
             this.btnCancelar.TabIndex = 7;
@@ -116,8 +118,8 @@
             // 
             // txtUrlImgTapa
             // 
-            this.txtUrlImgTapa.Location = new System.Drawing.Point(172, 105);
-            this.txtUrlImgTapa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUrlImgTapa.Location = new System.Drawing.Point(11, 163);
+            this.txtUrlImgTapa.Margin = new System.Windows.Forms.Padding(2);
             this.txtUrlImgTapa.Name = "txtUrlImgTapa";
             this.txtUrlImgTapa.Size = new System.Drawing.Size(129, 20);
             this.txtUrlImgTapa.TabIndex = 3;
@@ -126,7 +128,7 @@
             // lblUrlImgTapa
             // 
             this.lblUrlImgTapa.AutoSize = true;
-            this.lblUrlImgTapa.Location = new System.Drawing.Point(37, 107);
+            this.lblUrlImgTapa.Location = new System.Drawing.Point(11, 144);
             this.lblUrlImgTapa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUrlImgTapa.Name = "lblUrlImgTapa";
             this.lblUrlImgTapa.Size = new System.Drawing.Size(85, 13);
@@ -135,8 +137,8 @@
             // 
             // dtpFechaLanzamiento
             // 
-            this.dtpFechaLanzamiento.Location = new System.Drawing.Point(172, 57);
-            this.dtpFechaLanzamiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaLanzamiento.Location = new System.Drawing.Point(11, 73);
+            this.dtpFechaLanzamiento.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaLanzamiento.Name = "dtpFechaLanzamiento";
             this.dtpFechaLanzamiento.Size = new System.Drawing.Size(129, 20);
             this.dtpFechaLanzamiento.TabIndex = 1;
@@ -144,7 +146,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 154);
+            this.label1.Location = new System.Drawing.Point(11, 235);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
@@ -154,7 +156,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 131);
+            this.label3.Location = new System.Drawing.Point(11, 189);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
@@ -165,8 +167,8 @@
             // 
             this.cboEstilo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstilo.FormattingEnabled = true;
-            this.cboEstilo.Location = new System.Drawing.Point(172, 131);
-            this.cboEstilo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboEstilo.Location = new System.Drawing.Point(11, 208);
+            this.cboEstilo.Margin = new System.Windows.Forms.Padding(2);
             this.cboEstilo.Name = "cboEstilo";
             this.cboEstilo.Size = new System.Drawing.Size(129, 21);
             this.cboEstilo.TabIndex = 4;
@@ -175,18 +177,18 @@
             // 
             this.cboTipoEdicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoEdicion.FormattingEnabled = true;
-            this.cboTipoEdicion.Location = new System.Drawing.Point(172, 154);
-            this.cboTipoEdicion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboTipoEdicion.Location = new System.Drawing.Point(11, 254);
+            this.cboTipoEdicion.Margin = new System.Windows.Forms.Padding(2);
             this.cboTipoEdicion.Name = "cboTipoEdicion";
             this.cboTipoEdicion.Size = new System.Drawing.Size(129, 21);
             this.cboTipoEdicion.TabIndex = 5;
             // 
             // pxbDiscos
             // 
-            this.pxbDiscos.Location = new System.Drawing.Point(327, 32);
-            this.pxbDiscos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pxbDiscos.Location = new System.Drawing.Point(169, 28);
+            this.pxbDiscos.Margin = new System.Windows.Forms.Padding(2);
             this.pxbDiscos.Name = "pxbDiscos";
-            this.pxbDiscos.Size = new System.Drawing.Size(180, 140);
+            this.pxbDiscos.Size = new System.Drawing.Size(247, 212);
             this.pxbDiscos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pxbDiscos.TabIndex = 13;
             this.pxbDiscos.TabStop = false;
@@ -195,7 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 238);
+            this.ClientSize = new System.Drawing.Size(440, 325);
             this.Controls.Add(this.pxbDiscos);
             this.Controls.Add(this.cboTipoEdicion);
             this.Controls.Add(this.cboEstilo);
@@ -211,7 +213,9 @@
             this.Controls.Add(this.lblCantCanciones);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTitulo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(456, 366);
+            this.MinimumSize = new System.Drawing.Size(456, 366);
             this.Name = "frmNewDisk";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Disco";
