@@ -87,5 +87,23 @@ namespace business
             }
             finally { dataAccess.closeConecction(); }
         }
+
+        public void delete(int id) 
+        {
+            DataAccess dataAccess = new DataAccess();
+            try
+            {
+                dataAccess.setConsultation("delete from Discos where id = @id");
+                dataAccess.setParameters("@id",id);
+                dataAccess.ExecuteAction();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { dataAccess.closeConecction(); } 
+        }
+
     }
 }

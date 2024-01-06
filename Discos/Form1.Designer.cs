@@ -31,7 +31,7 @@
             this.dgvDisco = new System.Windows.Forms.DataGridView();
             this.pxbDiscos = new System.Windows.Forms.PictureBox();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEliminarFisico = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxbDiscos)).BeginInit();
@@ -43,52 +43,50 @@
             this.dgvDisco.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDisco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDisco.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvDisco.Location = new System.Drawing.Point(8, 238);
+            this.dgvDisco.Location = new System.Drawing.Point(12, 366);
+            this.dgvDisco.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvDisco.MultiSelect = false;
             this.dgvDisco.Name = "dgvDisco";
             this.dgvDisco.RowHeadersWidth = 45;
             this.dgvDisco.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDisco.Size = new System.Drawing.Size(675, 146);
+            this.dgvDisco.Size = new System.Drawing.Size(1012, 225);
             this.dgvDisco.TabIndex = 0;
             this.dgvDisco.SelectionChanged += new System.EventHandler(this.dgvDisco_SelectionChanged);
             // 
             // pxbDiscos
             // 
-            this.pxbDiscos.Location = new System.Drawing.Point(206, 11);
-            this.pxbDiscos.Margin = new System.Windows.Forms.Padding(2);
+            this.pxbDiscos.Location = new System.Drawing.Point(309, 17);
             this.pxbDiscos.Name = "pxbDiscos";
-            this.pxbDiscos.Size = new System.Drawing.Size(318, 211);
+            this.pxbDiscos.Size = new System.Drawing.Size(477, 325);
             this.pxbDiscos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pxbDiscos.TabIndex = 1;
             this.pxbDiscos.TabStop = false;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(206, 403);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregar.Location = new System.Drawing.Point(309, 620);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(78, 29);
+            this.btnAgregar.Size = new System.Drawing.Size(117, 45);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnEliminar
+            // btnEliminarFisico
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(326, 403);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(78, 29);
-            this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminarFisico.Location = new System.Drawing.Point(489, 620);
+            this.btnEliminarFisico.Name = "btnEliminarFisico";
+            this.btnEliminarFisico.Size = new System.Drawing.Size(117, 45);
+            this.btnEliminarFisico.TabIndex = 3;
+            this.btnEliminarFisico.Text = "Eliminar";
+            this.btnEliminarFisico.UseVisualStyleBackColor = true;
+            this.btnEliminarFisico.Click += new System.EventHandler(this.btnEliminarFisico_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(446, 403);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModificar.Location = new System.Drawing.Point(669, 620);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(78, 29);
+            this.btnModificar.Size = new System.Drawing.Size(117, 45);
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -96,16 +94,17 @@
             // 
             // FrmDisco
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 443);
+            this.ClientSize = new System.Drawing.Size(1042, 674);
             this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEliminarFisico);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.pxbDiscos);
             this.Controls.Add(this.dgvDisco);
-            this.MaximumSize = new System.Drawing.Size(731, 494);
-            this.MinimumSize = new System.Drawing.Size(711, 484);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(1086, 730);
+            this.MinimumSize = new System.Drawing.Size(1056, 714);
             this.Name = "FrmDisco";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Discos";
@@ -121,7 +120,7 @@
         private System.Windows.Forms.DataGridView dgvDisco;
         private System.Windows.Forms.PictureBox pxbDiscos;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnEliminarFisico;
         private System.Windows.Forms.Button btnModificar;
     }
 }

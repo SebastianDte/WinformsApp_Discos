@@ -70,6 +70,28 @@ namespace Discos
             pxbDiscos.Load(diskList[0].UrlImagenTapa);
             dgvDisco.Columns["Id"].Visible = false;
         }
+
+        private void btnEliminarFisico_Click(object sender, EventArgs e)
+        {
+            DiscoNegocio discoNegocio = new DiscoNegocio();
+            Disco select;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Seguro que quieres eliminarlo?", "Eliminando...",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes)
+                {
+                    select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+                    discoNegocio.delete(select.Id);
+                    cargar();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     } 
 }
 
