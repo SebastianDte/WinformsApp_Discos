@@ -10,10 +10,11 @@ namespace business
 {
     public class DiscoNegocio
     {
+        DataAccess dataAccess = new DataAccess();
         public List<Disco> toList()
         {
             List<Disco> list = new List<Disco>();
-            DataAccess dataAccess = new DataAccess();
+            
             try
             {
                 dataAccess.setConsultation("select d.Id,titulo, FechaLanzamiento, CantidadCanciones,UrlImagenTapa,E.Descripcion as EstiloDescripcion,T.Descripcion as TipoEdicionDescripcion,D.IdEstilo,D.IdTipoEdicion from Discos D,ESTILOS E,TIPOSEDICION T  where E.Id = D.IdEstilo and T.Id = D.IdTipoEdicion");
@@ -46,7 +47,7 @@ namespace business
 
         public void add(Disco newDisk)
         {
-            DataAccess dataAccess = new DataAccess();
+            
             try
             {
                 dataAccess.setConsultation("insert into DISCOS (Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,idEstilo,IdTipoEdicion) values (@Titulo,@FechaDeLanzamiento,@CantidadCanciones,@UrlImagenTapa,@idEstilo,@idTipoEdicion)");
@@ -67,7 +68,7 @@ namespace business
         
         public void update(Disco updateDisk) 
         {
-            DataAccess dataAccess = new DataAccess();
+            
             try
             {
                 dataAccess.setConsultation("update DISCOS set Titulo = @Titulo, FechaLanzamiento = @FechaLanzamiento,CantidadCanciones = @CantidadCanciones,UrlImagenTapa = @UrlImagenTapa,IdEstilo = @IdEstilo, IdTipoEdicion = @IdTipoEdicion where id = @id");
@@ -90,7 +91,7 @@ namespace business
 
         public void delete(int id) 
         {
-            DataAccess dataAccess = new DataAccess();
+            
             try
             {
                 dataAccess.setConsultation("delete from Discos where id = @id");

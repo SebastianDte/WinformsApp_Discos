@@ -1,0 +1,6 @@
+C:\Users\wxyz2\Desktop\Discos\Services\bin\Debug\Services.dll
+C:\Users\wxyz2\Desktop\Discos\Services\bin\Debug\Services.pdb
+C:\Users\wxyz2\Desktop\Discos\Services\obj\Debug\Services.csproj.AssemblyReference.cache
+C:\Users\wxyz2\Desktop\Discos\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
+C:\Users\wxyz2\Desktop\Discos\Services\obj\Debug\Services.dll
+C:\Users\wxyz2\Desktop\Discos\Services\obj\Debug\Services.pdb

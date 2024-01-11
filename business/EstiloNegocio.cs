@@ -9,10 +9,11 @@ namespace business
 {
     public class EstiloNegocio
     {
+        DataAccess dataAccess = new DataAccess();
         public List<Estilo> toList()
         {
             List<Estilo> list = new List<Estilo>();
-            DataAccess dataAccess = new DataAccess();
+            
             try
             {
                 dataAccess.setConsultation("SELECT Id, Descripcion FROM ESTILOS");

@@ -1,0 +1,11 @@
+C:\Users\wxyz2\Desktop\Discos\Servicess\bin\Debug\Servicess.dll
+C:\Users\wxyz2\Desktop\Discos\Servicess\bin\Debug\Servicess.pdb
+C:\Users\wxyz2\Desktop\Discos\Servicess\obj\Debug\Servicess.csproj.AssemblyReference.cache
+C:\Users\wxyz2\Desktop\Discos\Servicess\obj\Debug\Servicess.csproj.CoreCompileInputs.cache
+C:\Users\wxyz2\Desktop\Discos\Servicess\obj\Debug\Servicess.dll
+C:\Users\wxyz2\Desktop\Discos\Servicess\obj\Debug\Servicess.pdb
+C:\Users\wxyz2\Desktop\Discos\Servicess\bin\Debug\business.dll
+C:\Users\wxyz2\Desktop\Discos\Servicess\bin\Debug\Dominio.dll
+C:\Users\wxyz2\Desktop\Discos\Servicess\bin\Debug\business.pdb
+C:\Users\wxyz2\Desktop\Discos\Servicess\bin\Debug\Dominio.pdb
+C:\Users\wxyz2\Desktop\Discos\Servicess\obj\Debug\Servicess.csproj.CopyComplete

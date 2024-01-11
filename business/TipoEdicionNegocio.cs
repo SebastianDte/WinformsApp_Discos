@@ -9,11 +9,10 @@ namespace business
 {
     public class TipoEdicionNegocio
     {
+        DataAccess dataAccess = new DataAccess();
         public List<TipoEdicion>tolist()
         {
             List<TipoEdicion> list = new List<TipoEdicion>();
-            DataAccess dataAccess = new DataAccess();
-
             try
             {
                 dataAccess.setConsultation("SELECT Id, Descripcion FROM TIPOSEDICION");

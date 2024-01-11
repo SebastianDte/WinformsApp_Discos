@@ -24,13 +24,17 @@ namespace Discos
         private void FrmDisco_Load(object sender, EventArgs e)
         {
             cargar();
+            ocultColumns();
         }
 
         private void dgvDisco_SelectionChanged(object sender, EventArgs e)
         {
-
-            Disco selected = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-            uploadImage(selected.UrlImagenTapa);
+            if(dgvDisco.CurrentRow != null)
+            {
+                Disco selected = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+                uploadImage(selected.UrlImagenTapa);
+            }    
+            
         }
 
         private void uploadImage(string imagen)
@@ -49,8 +53,9 @@ namespace Discos
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmNewDisk newDisk = new frmNewDisk();
-            newDisk.ShowDialog();
+            newDisk.ShowDialog();            
             cargar();
+            ocultColumns();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -58,14 +63,19 @@ namespace Discos
             Disco select;
             select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
             frmNewDisk updateDisk = new frmNewDisk(select);
-            updateDisk.ShowDialog();
+            updateDisk.ShowDialog();            
             cargar();
+            ocultColumns();
         }
         private void cargar()
         {
             DiscoNegocio negocio = new DiscoNegocio();
             diskList = negocio.toList();
             dgvDisco.DataSource = diskList;
+            
+        }
+        private void ocultColumns()
+        {
             dgvDisco.Columns["UrlImagenTapa"].Visible = false;
             pxbDiscos.Load(diskList[0].UrlImagenTapa);
             dgvDisco.Columns["Id"].Visible = false;
@@ -81,8 +91,9 @@ namespace Discos
                 if(respuesta == DialogResult.Yes)
                 {
                     select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-                    discoNegocio.delete(select.Id);
+                    discoNegocio.delete(select.Id);                    
                     cargar();
+                    ocultColumns();
                 }
                 
             }
@@ -91,6 +102,27 @@ namespace Discos
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            List<Disco> listFilter;
+            string filter = txtFiltro.Text;
+            if(filter != "")
+            {
+                listFilter = diskList.FindAll(x => x.Titulo == filter);
+            }
+            else
+            {
+                listFilter = diskList;
+            }
+            dgvDisco.DataSource = null;
+            dgvDisco.DataSource = listFilter;
+            ocultColumns();
+
+
+
+
         }
     } 
 }
