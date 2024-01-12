@@ -13,20 +13,16 @@ namespace Discos
 {
     public partial class FrmDisco : Form
     {
-        private List<Disco> diskList;
-        
+        private List<Disco> diskList;   
         public FrmDisco()
         {
             InitializeComponent();
-        }
-        
-
+        } 
         private void FrmDisco_Load(object sender, EventArgs e)
         {
-            cargar();
-            ocultColumns();
+            loadData();
+            hideColumns();
         }
-
         private void dgvDisco_SelectionChanged(object sender, EventArgs e)
         {
             if(dgvDisco.CurrentRow != null)
@@ -36,7 +32,82 @@ namespace Discos
             }    
             
         }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmNewDisk newDisk = new frmNewDisk();
+            newDisk.ShowDialog();            
+            loadData();
+            hideColumns();
+        }
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if(dgvDisco.CurrentRow != null)
+            {
+                Disco select;
+                select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+                frmNewDisk updateDisk = new frmNewDisk(select);
+                updateDisk.ShowDialog();
+                loadData();
+                hideColumns();
+            }
+            else { MessageBox.Show("Seleccione un elemento de la lista"); }
+            
+        }
+        private void btnEliminarFisico_Click(object sender, EventArgs e)
+        {
+            DiscoNegocio discoNegocio = new DiscoNegocio();
+            Disco select;
+            try
+            {
+                    if (dgvDisco.CurrentRow != null)
+                    {
+                        DialogResult respuesta = MessageBox.Show("¿Seguro que quieres eliminarlo?", "Eliminando...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+                            discoNegocio.delete(select.Id);
+                            loadData();
+                            hideColumns();
+                        }                              
+                    }
+                    else { MessageBox.Show("Seleccione un elemento de la Lista"); }     
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            List<Disco> listFilter;
+            string filter = txtFiltro.Text;
+            if (filter != "")
+            {
+                listFilter = diskList.FindAll(x => x.Titulo.ToUpper().Contains(filter.ToUpper()));
+            }
+            else
+            {
+                listFilter = diskList;
+            }
+            dgvDisco.DataSource = null;
+            dgvDisco.DataSource = listFilter;
+            hideColumns();
+        }
+        //Metodos
+        private void loadData()
+        {
+            DiscoNegocio negocio = new DiscoNegocio();
+            diskList = negocio.toList();
+            dgvDisco.DataSource = diskList;
+            
+        }
+        private void hideColumns()
+        {
+            dgvDisco.Columns["UrlImagenTapa"].Visible = false;
+            pxbDiscos.Load(diskList[0].UrlImagenTapa);
+            dgvDisco.Columns["Id"].Visible = false;
+        }
         private void uploadImage(string imagen)
         {
             try
@@ -48,81 +119,6 @@ namespace Discos
 
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmNewDisk newDisk = new frmNewDisk();
-            newDisk.ShowDialog();            
-            cargar();
-            ocultColumns();
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            Disco select;
-            select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-            frmNewDisk updateDisk = new frmNewDisk(select);
-            updateDisk.ShowDialog();            
-            cargar();
-            ocultColumns();
-        }
-        private void cargar()
-        {
-            DiscoNegocio negocio = new DiscoNegocio();
-            diskList = negocio.toList();
-            dgvDisco.DataSource = diskList;
-            
-        }
-        private void ocultColumns()
-        {
-            dgvDisco.Columns["UrlImagenTapa"].Visible = false;
-            pxbDiscos.Load(diskList[0].UrlImagenTapa);
-            dgvDisco.Columns["Id"].Visible = false;
-        }
-
-        private void btnEliminarFisico_Click(object sender, EventArgs e)
-        {
-            DiscoNegocio discoNegocio = new DiscoNegocio();
-            Disco select;
-            try
-            {
-                DialogResult respuesta = MessageBox.Show("¿Seguro que quieres eliminarlo?", "Eliminando...",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-                if(respuesta == DialogResult.Yes)
-                {
-                    select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-                    discoNegocio.delete(select.Id);                    
-                    cargar();
-                    ocultColumns();
-                }
-                
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            List<Disco> listFilter;
-            string filter = txtFiltro.Text;
-            if(filter != "")
-            {
-                listFilter = diskList.FindAll(x => x.Titulo == filter);
-            }
-            else
-            {
-                listFilter = diskList;
-            }
-            dgvDisco.DataSource = null;
-            dgvDisco.DataSource = listFilter;
-            ocultColumns();
-
-
-
-
         }
     } 
 }

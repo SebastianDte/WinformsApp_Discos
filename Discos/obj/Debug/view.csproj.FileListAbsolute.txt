@@ -37,5 +37,3 @@ C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\View.csproj.CoreCompil
 C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\View.csproj.CopyComplete
 C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\Discos.exe
 C:\Users\Sebastian\Desktop\Discos\Discos\Discos\obj\Debug\Discos.pdb
-C:\Users\wxyz2\Desktop\Discos\Discos\bin\Debug\Servicess.dll
-C:\Users\wxyz2\Desktop\Discos\Discos\bin\Debug\Servicess.pdb
