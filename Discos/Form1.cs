@@ -22,6 +22,9 @@ namespace Discos
         {
             loadData();
             hideColumns();
+            cboCampo.Items.Add("Titulo");
+            cboCampo.Items.Add("Cantidad de Canciones");
+            cboCampo.Items.Add("Estilo");
         }
         private void dgvDisco_SelectionChanged(object sender, EventArgs e)
         {
@@ -119,6 +122,13 @@ namespace Discos
 
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // string option = cboCampo.SelectedItem.ToString();
+
+           //if(option == "")
         }
     } 
 }
