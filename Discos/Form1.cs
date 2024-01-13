@@ -80,19 +80,7 @@ namespace Discos
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            List<Disco> listFilter;
-            string filter = txtFiltro.Text;
-            if (filter != "")
-            {
-                listFilter = diskList.FindAll(x => x.Titulo.ToUpper().Contains(filter.ToUpper()));
-            }
-            else
-            {
-                listFilter = diskList;
-            }
-            dgvDisco.DataSource = null;
-            dgvDisco.DataSource = listFilter;
-            hideColumns();
+           
         }
         //Metodos
         private void loadData()
@@ -119,6 +107,23 @@ namespace Discos
 
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Disco> listFilter;
+            string filter = txtFiltro.Text;
+            if (filter.Length >= 2)
+            {
+                listFilter = diskList.FindAll(x => x.Titulo.ToUpper().Contains(filter.ToUpper()));
+            }
+            else
+            {
+                listFilter = diskList;
+            }
+            dgvDisco.DataSource = null;
+            dgvDisco.DataSource = listFilter;
+            hideColumns();
         }
     } 
 }
