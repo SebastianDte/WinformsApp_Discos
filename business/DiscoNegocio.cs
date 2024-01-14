@@ -106,5 +106,86 @@ namespace business
             finally { dataAccess.closeConecction(); } 
         }
 
+        public List<Disco> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Disco> list = new List<Disco>();
+            
+            try
+            {
+                string consulta = "select d.Id,titulo, FechaLanzamiento, CantidadCanciones,UrlImagenTapa,E.Descripcion as EstiloDescripcion,T.Descripcion as TipoEdicionDescripcion,D.IdEstilo,D.IdTipoEdicion from Discos D,ESTILOS E,TIPOSEDICION T  where E.Id = D.IdEstilo and T.Id = D.IdTipoEdicion and ";
+                switch (campo)
+                {
+                    case "Cantidad de Canciones":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "CantidadCanciones  > " + filtro;
+                                break;
+                            case "Menor a":
+                                consulta += "CantidadCanciones < " + filtro;
+                                break;
+                            default:
+                                consulta += "CantidadCanciones = " + filtro;
+                                break;
+                        }
+                        break;
+                    case "Titulo":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += " titulo like '%" + filtro + "'" ;
+                                break;
+                            case "Termina con":
+                                consulta += " titulo like '"+ filtro +"%'" ;
+                                break;
+                           default:
+                                consulta += " titulo like '%"+filtro+ "%'"  ;
+                                break;
+                        }         
+                        break;
+                    case "Estilo":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += " E.Descripcion like '%" + filtro + "'";
+                                break;
+                            case "Termina con":
+                                consulta += " E.Descripcion like '" + filtro + "%'";
+                                break;
+                            default:
+                                consulta += " E.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                dataAccess.setConsultation(consulta);
+                dataAccess.executeReading();
+                while (dataAccess.Reader.Read())
+                {
+                    Disco aux = new Disco();
+                    aux.Id = (int)dataAccess.Reader["Id"];
+                    aux.Titulo = (string)dataAccess.Reader["Titulo"];
+                    aux.FechaDeLanzamiento = (DateTime)dataAccess.Reader["FechaLanzamiento"];
+                    aux.CantidadDeCanciones = (int)dataAccess.Reader["CantidadCanciones"];
+                    aux.UrlImagenTapa = (string)dataAccess.Reader["UrlImagenTapa"];
+                    aux.Estilo = new Estilo();
+                    aux.Estilo.Descripcion = (string)dataAccess.Reader["EstiloDescripcion"];
+                    aux.Estilo.Id = (int)dataAccess.Reader["IdEstilo"];
+                    aux.TipoEdicion = new TipoEdicion();
+                    aux.TipoEdicion.Descripcion = (string)dataAccess.Reader["TipoEdicionDescripcion"];
+                    aux.TipoEdicion.Id = (int)dataAccess.Reader["IdTipoEdicion"];
+                    list.Add(aux);
+                }
+                dataAccess.closeConecction();
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

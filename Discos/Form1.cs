@@ -22,6 +22,9 @@ namespace Discos
         {
             loadData();
             hideColumns();
+            cboCampo.Items.Add("Titulo");
+            cboCampo.Items.Add("Cantidad de Canciones");
+            cboCampo.Items.Add("Estilo");
         }
         private void dgvDisco_SelectionChanged(object sender, EventArgs e)
         {
@@ -80,7 +83,22 @@ namespace Discos
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-           
+            DiscoNegocio negocio = new DiscoNegocio();
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dgvDisco.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+
         }
         //Metodos
         private void loadData()
@@ -109,6 +127,7 @@ namespace Discos
             }
         }
 
+
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Disco> listFilter;
@@ -124,7 +143,27 @@ namespace Discos
             dgvDisco.DataSource = null;
             dgvDisco.DataSource = listFilter;
             hideColumns();
+    }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string option = cboCampo.SelectedItem.ToString();
+
+            if(option == "Cantidad de Canciones")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con ");
+                cboCriterio.Items.Add("Termina con ");
+                cboCriterio.Items.Add("Contiene ");
+            }
         }
-    } 
+    }
 }
 

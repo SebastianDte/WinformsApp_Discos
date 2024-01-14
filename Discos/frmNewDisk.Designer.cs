@@ -43,6 +43,7 @@
             this.cboEstilo = new System.Windows.Forms.ComboBox();
             this.cboTipoEdicion = new System.Windows.Forms.ComboBox();
             this.pxbDiscos = new System.Windows.Forms.PictureBox();
+            this.BtnAgregarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pxbDiscos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,11 +194,22 @@
             this.pxbDiscos.TabIndex = 13;
             this.pxbDiscos.TabStop = false;
             // 
+            // BtnAgregarImagen
+            // 
+            this.BtnAgregarImagen.Location = new System.Drawing.Point(146, 163);
+            this.BtnAgregarImagen.Name = "BtnAgregarImagen";
+            this.BtnAgregarImagen.Size = new System.Drawing.Size(18, 23);
+            this.BtnAgregarImagen.TabIndex = 14;
+            this.BtnAgregarImagen.Text = "+";
+            this.BtnAgregarImagen.UseVisualStyleBackColor = true;
+            this.BtnAgregarImagen.Click += new System.EventHandler(this.BtnAgregarImagen_Click);
+            // 
             // frmNewDisk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 325);
+            this.Controls.Add(this.BtnAgregarImagen);
             this.Controls.Add(this.pxbDiscos);
             this.Controls.Add(this.cboTipoEdicion);
             this.Controls.Add(this.cboEstilo);
@@ -243,5 +255,6 @@
         private System.Windows.Forms.ComboBox cboEstilo;
         private System.Windows.Forms.ComboBox cboTipoEdicion;
         private System.Windows.Forms.PictureBox pxbDiscos;
+        private System.Windows.Forms.Button BtnAgregarImagen;
     }
 }

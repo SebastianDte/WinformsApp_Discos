@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using business;
+using System.IO;
+using System.Configuration;
 
 namespace Discos
 {
@@ -124,6 +126,23 @@ namespace Discos
             }
         }
 
-        
+        private void BtnAgregarImagen_Click(object sender, EventArgs e)
+        {
+                OpenFileDialog archivo = new OpenFileDialog();
+                archivo.Filter = "jpg|*.jpg|png|*.png";
+
+                if (archivo.ShowDialog() == DialogResult.OK)
+                {
+                    string destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
+                    string destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
+
+                    if (!Directory.Exists(destinoCarpeta))
+                        Directory.CreateDirectory(destinoCarpeta);
+                        
+                        txtUrlImgTapa.Text = destinoArchivo;
+                        uploadImage(archivo.FileName);
+                        File.Copy(archivo.FileName, destinoArchivo);
+                }
+        }
     }
 }
