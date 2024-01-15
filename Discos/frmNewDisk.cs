@@ -17,8 +17,12 @@ namespace Discos
     public partial class frmNewDisk : Form
     {
         private Disco disk = null;
+        private OpenFileDialog archivo = null;
+        private string destinoCarpeta;
+        private string destinoArchivo;
 
-        
+
+
         public frmNewDisk()
         {
             InitializeComponent();
@@ -65,6 +69,9 @@ namespace Discos
                     discoNegocio.add(disk);
                     MessageBox.Show("Agregado exisotsamente");
                 }
+                if (archivo != null && !(txtUrlImgTapa.Text.ToUpper().Contains("HTTP")))
+                    File.Copy(archivo.FileName, destinoArchivo);
+
                 Close();
 
                 
@@ -133,15 +140,15 @@ namespace Discos
 
                 if (archivo.ShowDialog() == DialogResult.OK)
                 {
-                    string destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
-                    string destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
+                     destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
+                     destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
 
                     if (!Directory.Exists(destinoCarpeta))
                         Directory.CreateDirectory(destinoCarpeta);
                         
                         txtUrlImgTapa.Text = destinoArchivo;
                         uploadImage(archivo.FileName);
-                        File.Copy(archivo.FileName, destinoArchivo);
+                        
                 }
         }
     }
