@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using business;
+using System.IO;
 namespace Discos
 {
     public partial class FrmDisco : Form
     {
-        private List<Disco> diskList;   
+        private List<Disco> diskList;
+        private string destinoArchivo;
+
         public FrmDisco()
         {
             InitializeComponent();
@@ -67,11 +70,23 @@ namespace Discos
                         DialogResult respuesta = MessageBox.Show("¿Seguro que quieres eliminarlo?", "Eliminando...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (respuesta == DialogResult.Yes)
                         {
-                            select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-                            discoNegocio.delete(select.Id);
+                        select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+
+                        // Paso 1: Obtener la ruta de la imagen asociada
+                        string rutaImagen = select.UrlImagenTapa; // Ajusta esto según la estructura de tu clase Disco
+
+                        // Paso 2: Eliminar el disco de la base de datos
+                        using (FileStream fs = new FileStream(destinoArchivo, FileMode.Open, FileAccess.ReadWrite)) { }
+                        discoNegocio.delete(select.Id);
+
+                        // Paso 3: Eliminar la imagen asociada
+                        if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+                        {
+                            File.Delete(rutaImagen);
+                        }
                             loadData();
                             hideColumns();
-                        }                              
+                        }                                 
                     }
                     else { MessageBox.Show("Seleccione un elemento de la Lista"); }     
             }
