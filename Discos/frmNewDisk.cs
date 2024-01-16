@@ -49,16 +49,13 @@ namespace Discos
             try
             {
                 if (disk == null)
-                     disk = new Disco();
-                
-                
+                     disk = new Disco();             
                 disk.Titulo = txtTitulo.Text;
                 disk.FechaDeLanzamiento = dtpFechaLanzamiento.Value;
                 disk.CantidadDeCanciones = int.Parse(txtCantCanciones.Text);
                 disk.UrlImagenTapa = txtUrlImgTapa.Text;
                 disk.Estilo = (Estilo)cboEstilo.SelectedItem;
                 disk.TipoEdicion = (TipoEdicion)cboTipoEdicion.SelectedItem;
-
                 if(disk.Id != 0 )
                 {
                     discoNegocio.update(disk);
@@ -69,16 +66,16 @@ namespace Discos
                     discoNegocio.add(disk);
                     MessageBox.Show("Agregado exisotsamente");
                 }
-                if (archivo != null && !(txtUrlImgTapa.Text.ToUpper().Contains("HTTP")))
-                    File.Copy(archivo.FileName, destinoArchivo);
-
+                if (archivo != null && !string.IsNullOrEmpty(archivo.FileName) && !(txtUrlImgTapa.Text.ToUpper().Contains("HTTP")))
+                {
+                    if (!Directory.Exists(destinoCarpeta))
+                        Directory.CreateDirectory(destinoCarpeta);
+                    File.Copy(archivo.FileName, destinoArchivo, true);
+                }
                 Close();
-
-                
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -101,16 +98,14 @@ namespace Discos
                     txtTitulo.Text = disk.Titulo;
                     dtpFechaLanzamiento.Value = disk.FechaDeLanzamiento;
                     txtCantCanciones.Text = disk.CantidadDeCanciones.ToString();
+                    txtUrlImgTapa.Text = disk.UrlImagenTapa;
                     uploadImage(disk.UrlImagenTapa);
                     cboEstilo.SelectedValue = disk.Estilo.Id;
-                    cboTipoEdicion.SelectedValue = disk.TipoEdicion.Id;
-                    
+                    cboTipoEdicion.SelectedValue = disk.TipoEdicion.Id;                    
                 }
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -138,18 +133,71 @@ namespace Discos
                 OpenFileDialog archivo = new OpenFileDialog();
                 archivo.Filter = "jpg|*.jpg|png|*.png";
 
-                if (archivo.ShowDialog() == DialogResult.OK)
-                {
-                     destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
-                     destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
+                destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
+                uploadImage(archivo.FileName);
 
-                    if (!Directory.Exists(destinoCarpeta))
-                        Directory.CreateDirectory(destinoCarpeta);
-                        
-                        txtUrlImgTapa.Text = destinoArchivo;
-                        uploadImage(archivo.FileName);
-                        
+                if (!Directory.Exists(destinoCarpeta))
+                    Directory.CreateDirectory(destinoCarpeta);
+
+                txtUrlImgTapa.Text = destinoArchivo;
+
+                if (File.Exists(destinoArchivo))
+                {
+                    DialogResult result = MessageBox.Show("La imagen ya existe. ¿Desea reemplazarla?", "Advertencia", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Reemplazar la imagen existente.
+                        try
+                        {
+                            using (FileStream fs = new FileStream(destinoArchivo, FileMode.Open, FileAccess.ReadWrite)) { }                            
+                            File.Copy(archivo.FileName, destinoArchivo, true);
+                        }
+                        catch (IOException ex)
+                        {                            
+                            MessageBox.Show($"Error al reemplazar la imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        // Mantener ambos archivos 
+                        destinoArchivo = GetUniqueFileName(destinoCarpeta, archivo.SafeFileName);
+                        File.Copy(archivo.FileName, destinoArchivo);
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        // Cancelar la operación.
+                        return;
+                    }
                 }
+                else
+                {        
+                    File.Copy(archivo.FileName, destinoArchivo);
+                }
+               
+            }        
+        }
+        private string GetUniqueFileName(string folder, string fileName)
+        {
+            string uniqueFileName = fileName;
+
+            int counter = 1;
+            while (File.Exists(Path.Combine(folder, uniqueFileName)))
+            {
+                // Si el archivo ya existe, agregar un número al final del nombre del archivo.
+                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+                string fileExtension = Path.GetExtension(fileName);
+                uniqueFileName = $"{fileNameWithoutExtension}_{counter}{fileExtension}";
+
+                counter++;
+            }
+            return Path.Combine(folder, uniqueFileName);
         }
     }
+    
+    
 }
