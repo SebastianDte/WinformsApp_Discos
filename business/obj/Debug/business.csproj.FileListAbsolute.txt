@@ -16,3 +16,12 @@ C:\Users\Sebastian\Desktop\Discos\Discos\business\obj\Debug\business.csproj.Core
 C:\Users\Sebastian\Desktop\Discos\Discos\business\obj\Debug\business.csproj.CopyComplete
 C:\Users\Sebastian\Desktop\Discos\Discos\business\obj\Debug\business.dll
 C:\Users\Sebastian\Desktop\Discos\Discos\business\obj\Debug\business.pdb
+C:\Users\Sebastian\Desktop\Discos\business\bin\Debug\business.dll
+C:\Users\Sebastian\Desktop\Discos\business\bin\Debug\business.pdb
+C:\Users\Sebastian\Desktop\Discos\business\bin\Debug\Dominio.dll
+C:\Users\Sebastian\Desktop\Discos\business\bin\Debug\Dominio.pdb
+C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\Business.csproj.AssemblyReference.cache
+C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\business.dll
+C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\business.pdb

@@ -56,8 +56,7 @@ namespace Discos
                 loadData();
                 hideColumns();
             }
-            else { MessageBox.Show("Seleccione un elemento de la lista"); }
-            
+            else { MessageBox.Show("Seleccione un elemento de la lista"); }            
         }
         private void btnEliminarFisico_Click(object sender, EventArgs e)
         {
@@ -70,20 +69,8 @@ namespace Discos
                         DialogResult respuesta = MessageBox.Show("¿Seguro que quieres eliminarlo?", "Eliminando...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (respuesta == DialogResult.Yes)
                         {
-                        select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-
-                        // Paso 1: Obtener la ruta de la imagen asociada
-                        string rutaImagen = select.UrlImagenTapa; // Ajusta esto según la estructura de tu clase Disco
-
-                        // Paso 2: Eliminar el disco de la base de datos
-                        using (FileStream fs = new FileStream(destinoArchivo, FileMode.Open, FileAccess.ReadWrite)) { }
+                        select = (Disco)dgvDisco.CurrentRow.DataBoundItem;            
                         discoNegocio.delete(select.Id);
-
-                        // Paso 3: Eliminar la imagen asociada
-                        if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
-                        {
-                            File.Delete(rutaImagen);
-                        }
                             loadData();
                             hideColumns();
                         }                                 
@@ -141,8 +128,6 @@ namespace Discos
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
         }
-
-
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Disco> listFilter;
@@ -159,7 +144,6 @@ namespace Discos
             dgvDisco.DataSource = listFilter;
             hideColumns();
     }
-
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string option = cboCampo.SelectedItem.ToString();

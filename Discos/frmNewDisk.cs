@@ -20,9 +20,6 @@ namespace Discos
         private OpenFileDialog archivo = null;
         private string destinoCarpeta;
         private string destinoArchivo;
-
-
-
         public frmNewDisk()
         {
             InitializeComponent();
@@ -34,13 +31,10 @@ namespace Discos
             this.disk = select;
             Text = "Modificar Disco";
         }
-
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
@@ -59,26 +53,29 @@ namespace Discos
                 if (disk.Id != 0)
                 {
                     discoNegocio.update(disk);
+                    if (!string.IsNullOrEmpty(txtUrlImgTapa.Text))
+                    {
+                        SeleccionarYProcesarImagenlocal();
+                    }
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
                     discoNegocio.add(disk);
+                    if (!string.IsNullOrEmpty(txtUrlImgTapa.Text))
+                    {
+                        SeleccionarYProcesarImagenlocal();
+                    }
                     MessageBox.Show("Agregado exisotsamente");
-                }
-                //if (archivo != null && !string.IsNullOrEmpty(archivo.FileName) && !(txtUrlImgTapa.Text.ToUpper().Contains("HTTP")))
+                }                
                 Close();
 
             }
-
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
         private void frmNewDisk_Load(object sender, EventArgs e)
         {
             EstiloNegocio estiloNegocio = new EstiloNegocio();
@@ -108,7 +105,6 @@ namespace Discos
                 throw ex;
             }
         }
-
         private void txtUrlImgTapa_Leave(object sender, EventArgs e)
         {
             uploadImage(txtUrlImgTapa.Text);
@@ -126,10 +122,18 @@ namespace Discos
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
         }
-
         private void BtnAgregarImagen_Click(object sender, EventArgs e)
         {
-            SeleccionarYProcesarImagenlocal();
+            OpenFileDialog archivoDialog = new OpenFileDialog();
+            archivoDialog.Filter = "jpg|*.jpg|png|*.png";
+            if (archivoDialog.ShowDialog() == DialogResult.OK)
+            {
+                archivo = archivoDialog;  // Asignar el archivo seleccionado a la variable de clase para que sea accesible en otros métodos
+                destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
+                destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
+                txtUrlImgTapa.Text = destinoArchivo;
+                uploadImage(archivo.FileName);
+            }
         }
         private string GetUniqueFileName(string folder, string fileName)
         {
@@ -149,21 +153,11 @@ namespace Discos
         }
         private void SeleccionarYProcesarImagenlocal()
         {
-            OpenFileDialog archivo = new OpenFileDialog();
-            archivo.Filter = "jpg|*.jpg|png|*.png";
-
-            if (archivo.ShowDialog() == DialogResult.OK)
+            if (archivo != null)
             {
-                destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
-                destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
-                uploadImage(archivo.FileName);
-
-                if (!Directory.Exists(destinoCarpeta))
-                    Directory.CreateDirectory(destinoCarpeta);
-                txtUrlImgTapa.Text = destinoArchivo;
                 if (File.Exists(destinoArchivo))
                 {
-                    DialogResult result = MessageBox.Show("La imagen ya existe. ¿Desea reemplazarla?", "Advertencia", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show("La imagen ya existe. ¿Desea reemplazarla?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
                     {
@@ -181,8 +175,9 @@ namespace Discos
 
                         try
                         {
-                            //reemplazar el archivo.
+                            // Reemplazar el archivo.
                             File.Copy(archivo.FileName, destinoArchivo);
+                            
                         }
                         catch (IOException ex)
                         {
@@ -195,12 +190,8 @@ namespace Discos
                         // Mantener ambos archivos 
                         destinoArchivo = GetUniqueFileName(destinoCarpeta, archivo.SafeFileName);
                         File.Copy(archivo.FileName, destinoArchivo);
-                    }
-                    else if (result == DialogResult.Cancel)
-                    {
-                        // Cancelar la operación.
-                        return;
-                    }
+                        MessageBox.Show("Se creo una copia de la imagen");
+                    }  
                 }
                 else
                 {
@@ -208,5 +199,6 @@ namespace Discos
                 }
             }
         }
+
     }
 }
