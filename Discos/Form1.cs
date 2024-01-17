@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using dominio;
 using business;
 using System.IO;
+using System.Threading;
 namespace Discos
 {
     public partial class FrmDisco : Form
@@ -69,8 +70,16 @@ namespace Discos
                         DialogResult respuesta = MessageBox.Show("¿Seguro que quieres eliminarlo?", "Eliminando...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (respuesta == DialogResult.Yes)
                         {
-                        select = (Disco)dgvDisco.CurrentRow.DataBoundItem;            
-                        discoNegocio.delete(select.Id);
+                            select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
+                            string rutaImagen = select.UrlImagenTapa;
+                            discoNegocio.delete(select.Id);
+                        if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+                        {
+                            Task.Delay(500).ContinueWith(_ =>
+                            {
+                                File.Delete(rutaImagen);
+                            }, TaskScheduler.FromCurrentSynchronizationContext());
+                        }
                             loadData();
                             hideColumns();
                         }                                 
@@ -165,4 +174,11 @@ namespace Discos
         }
     }
 }
+                            
+                                
+
+
+
+
+
 

@@ -37,9 +37,7 @@ namespace Discos
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
             DiscoNegocio discoNegocio = new DiscoNegocio();
-
             try
             {
                 if (disk == null)
@@ -54,7 +52,7 @@ namespace Discos
                 {
                     discoNegocio.update(disk);
                     if (!string.IsNullOrEmpty(txtUrlImgTapa.Text))
-                    {
+                    { 
                         SeleccionarYProcesarImagenlocal();
                     }
                     MessageBox.Show("Modificado exitosamente");
@@ -128,7 +126,7 @@ namespace Discos
             archivoDialog.Filter = "jpg|*.jpg|png|*.png";
             if (archivoDialog.ShowDialog() == DialogResult.OK)
             {
-                archivo = archivoDialog;  // Asignar el archivo seleccionado a la variable de clase para que sea accesible en otros métodos
+                archivo = archivoDialog; 
                 destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
                 destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
                 txtUrlImgTapa.Text = destinoArchivo;
@@ -164,7 +162,6 @@ namespace Discos
                         // Reemplazar la imagen existente.
                         try
                         {
-                            // Elimina el archivo existente
                             File.Delete(destinoArchivo);
                         }
                         catch (IOException ex)
@@ -175,9 +172,7 @@ namespace Discos
 
                         try
                         {
-                            // Reemplazar el archivo.
-                            File.Copy(archivo.FileName, destinoArchivo);
-                            
+                            File.Copy(archivo.FileName, destinoArchivo);                            
                         }
                         catch (IOException ex)
                         {
@@ -190,7 +185,6 @@ namespace Discos
                         // Mantener ambos archivos 
                         destinoArchivo = GetUniqueFileName(destinoCarpeta, archivo.SafeFileName);
                         File.Copy(archivo.FileName, destinoArchivo);
-                        MessageBox.Show("Se creo una copia de la imagen");
                     }  
                 }
                 else
