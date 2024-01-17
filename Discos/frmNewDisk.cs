@@ -18,6 +18,7 @@ namespace Discos
     {
         private Disco disk = null;
         private OpenFileDialog archivo = null;
+        HelpersView helpView = new HelpersView();
         private string destinoCarpeta;
         private string destinoArchivo;
         public frmNewDisk()
@@ -51,21 +52,22 @@ namespace Discos
                 if (disk.Id != 0)
                 {
                     discoNegocio.update(disk);
-                    if (!string.IsNullOrEmpty(txtUrlImgTapa.Text))
-                    { 
-                        SeleccionarYProcesarImagenlocal();
-                    }
+                    if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
+                        helpView.SeleccionarYProcesarImagenlocal(archivo,destinoArchivo,destinoCarpeta);
+                     
                     MessageBox.Show("Modificado exitosamente");
                 }
+                    
                 else
                 {
                     discoNegocio.add(disk);
-                    if (!string.IsNullOrEmpty(txtUrlImgTapa.Text))
-                    {
-                        SeleccionarYProcesarImagenlocal();
-                    }
+                    if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
+                        helpView.SeleccionarYProcesarImagenlocal(archivo, destinoArchivo, destinoCarpeta);
+
                     MessageBox.Show("Agregado exisotsamente");
                 }                
+                    
+                    
                 Close();
 
             }
@@ -93,7 +95,7 @@ namespace Discos
                     dtpFechaLanzamiento.Value = disk.FechaDeLanzamiento;
                     txtCantCanciones.Text = disk.CantidadDeCanciones.ToString();
                     txtUrlImgTapa.Text = disk.UrlImagenTapa;
-                    uploadImage(disk.UrlImagenTapa);
+                    helpView.uploadImage(disk.UrlImagenTapa, pxbDiscos);
                     cboEstilo.SelectedValue = disk.Estilo.Id;
                     cboTipoEdicion.SelectedValue = disk.TipoEdicion.Id;
                 }
@@ -105,20 +107,8 @@ namespace Discos
         }
         private void txtUrlImgTapa_Leave(object sender, EventArgs e)
         {
-            uploadImage(txtUrlImgTapa.Text);
+            helpView.uploadImage(txtUrlImgTapa.Text, pxbDiscos);
 
-        }
-        private void uploadImage(string imagen)
-        {
-            try
-            {
-                pxbDiscos.Load(imagen);
-            }
-            catch (Exception)
-            {
-
-                pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
-            }
         }
         private void BtnAgregarImagen_Click(object sender, EventArgs e)
         {
@@ -130,67 +120,7 @@ namespace Discos
                 destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
                 destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
                 txtUrlImgTapa.Text = destinoArchivo;
-                uploadImage(archivo.FileName);
-            }
-        }
-        private string GetUniqueFileName(string folder, string fileName)
-        {
-            string uniqueFileName = fileName;
-
-            int counter = 1;
-            while (File.Exists(Path.Combine(folder, uniqueFileName)))
-            {
-                // Si el archivo ya existe, agregar un número al final del nombre del archivo.
-                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
-                string fileExtension = Path.GetExtension(fileName);
-                uniqueFileName = $"{fileNameWithoutExtension}_{counter}{fileExtension}";
-
-                counter++;
-            }
-            return Path.Combine(folder, uniqueFileName);
-        }
-        private void SeleccionarYProcesarImagenlocal()
-        {
-            if (archivo != null)
-            {
-                if (File.Exists(destinoArchivo))
-                {
-                    DialogResult result = MessageBox.Show("La imagen ya existe. ¿Desea reemplazarla?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        // Reemplazar la imagen existente.
-                        try
-                        {
-                            File.Delete(destinoArchivo);
-                        }
-                        catch (IOException ex)
-                        {
-                            MessageBox.Show($"Error al eliminar la imagen existente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        try
-                        {
-                            File.Copy(archivo.FileName, destinoArchivo);                            
-                        }
-                        catch (IOException ex)
-                        {
-                            MessageBox.Show($"Error al reemplazar la imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        // Mantener ambos archivos 
-                        destinoArchivo = GetUniqueFileName(destinoCarpeta, archivo.SafeFileName);
-                        File.Copy(archivo.FileName, destinoArchivo);
-                    }  
-                }
-                else
-                {
-                    File.Copy(archivo.FileName, destinoArchivo);
-                }
+                helpView.uploadImage(archivo.FileName, pxbDiscos);
             }
         }
 

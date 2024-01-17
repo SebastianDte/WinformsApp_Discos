@@ -59,6 +59,7 @@
     <Compile Include="frmNewDisk.Designer.cs">
       <DependentUpon>frmNewDisk.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelpersView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

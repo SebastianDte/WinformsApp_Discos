@@ -15,6 +15,7 @@ namespace Discos
 {
     public partial class FrmDisco : Form
     {
+        private HelpersView helpView = new HelpersView();
         private List<Disco> diskList;
         private string destinoArchivo;
 
@@ -24,8 +25,8 @@ namespace Discos
         } 
         private void FrmDisco_Load(object sender, EventArgs e)
         {
-            loadData();
-            hideColumns();
+            helpView.loadData(diskList,dgvDisco);
+            helpView.hideColumns(dgvDisco);
             cboCampo.Items.Add("Titulo");
             cboCampo.Items.Add("Cantidad de Canciones");
             cboCampo.Items.Add("Estilo");
@@ -35,16 +36,15 @@ namespace Discos
             if(dgvDisco.CurrentRow != null)
             {
                 Disco selected = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-                uploadImage(selected.UrlImagenTapa);
-            }    
-            
+                helpView.uploadImage(selected.UrlImagenTapa,pxbDiscos);
+            }               
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmNewDisk newDisk = new frmNewDisk();
             newDisk.ShowDialog();            
-            loadData();
-            hideColumns();
+            helpView.loadData(diskList, dgvDisco);
+            helpView.hideColumns(dgvDisco);
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -54,8 +54,8 @@ namespace Discos
                 select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
                 frmNewDisk updateDisk = new frmNewDisk(select);
                 updateDisk.ShowDialog();
-                loadData();
-                hideColumns();
+                helpView.loadData(diskList, dgvDisco);
+                helpView.hideColumns(dgvDisco);
             }
             else { MessageBox.Show("Seleccione un elemento de la lista"); }            
         }
@@ -73,15 +73,9 @@ namespace Discos
                             select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
                             string rutaImagen = select.UrlImagenTapa;
                             discoNegocio.delete(select.Id);
-                        if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
-                        {
-                            Task.Delay(500).ContinueWith(_ =>
-                            {
-                                File.Delete(rutaImagen);
-                            }, TaskScheduler.FromCurrentSynchronizationContext());
-                        }
-                            loadData();
-                            hideColumns();
+                            helpView.eliminarImagenLocal(rutaImagen);
+                            helpView.loadData(diskList, dgvDisco);
+                            helpView.hideColumns(dgvDisco);
                         }                                 
                     }
                     else { MessageBox.Show("Seleccione un elemento de la Lista"); }     
@@ -108,34 +102,6 @@ namespace Discos
 
                 MessageBox.Show(ex.ToString());
             }
-
-
-        }
-        //Metodos
-        private void loadData()
-        {
-            DiscoNegocio negocio = new DiscoNegocio();
-            diskList = negocio.toList();
-            dgvDisco.DataSource = diskList;
-            
-        }
-        private void hideColumns()
-        {
-            dgvDisco.Columns["UrlImagenTapa"].Visible = false;
-            pxbDiscos.Load(diskList[0].UrlImagenTapa);
-            dgvDisco.Columns["Id"].Visible = false;
-        }
-        private void uploadImage(string imagen)
-        {
-            try
-            {
-                pxbDiscos.Load(imagen);
-            }
-            catch (Exception)
-            {
-
-                pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
-            }
         }
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
@@ -151,13 +117,13 @@ namespace Discos
             }
             dgvDisco.DataSource = null;
             dgvDisco.DataSource = listFilter;
-            hideColumns();
-    }
+            helpView.hideColumns(dgvDisco);
+        }
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string option = cboCampo.SelectedItem.ToString();
 
-            if(option == "Cantidad de Canciones")
+            if (option == "Cantidad de Canciones")
             {
                 cboCriterio.Items.Clear();
                 cboCriterio.Items.Add("Mayor a");
@@ -172,6 +138,7 @@ namespace Discos
                 cboCriterio.Items.Add("Contiene ");
             }
         }
+       
     }
 }
                             
