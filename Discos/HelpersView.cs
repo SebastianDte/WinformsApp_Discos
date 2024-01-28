@@ -24,13 +24,14 @@ namespace Discos
                 pxbDiscos.Load("https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png");
             }
         }
-        public void loadData(List<Disco> diskList,DataGridView dgvDisco)
+        public void loadData(ref List<Disco>  diskList, ref DataGridView dgvDisco)
         {
             DiscoNegocio negocio = new DiscoNegocio();
             diskList = negocio.toList();
             dgvDisco.DataSource = diskList;
+            hideColumns(ref dgvDisco);
         }
-        public void hideColumns(DataGridView dgvDisco)
+        public void hideColumns(ref DataGridView dgvDisco)
         {
             dgvDisco.Columns["UrlImagenTapa"].Visible = false;
             dgvDisco.Columns["Id"].Visible = false;

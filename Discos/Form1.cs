@@ -17,7 +17,7 @@ namespace Discos
     {
         private HelpersView helpView = new HelpersView();
         private List<Disco> diskList;
-        private string destinoArchivo;
+        
 
         public FrmDisco()
         {
@@ -25,8 +25,8 @@ namespace Discos
         } 
         private void FrmDisco_Load(object sender, EventArgs e)
         {
-            helpView.loadData(diskList,dgvDisco);
-            helpView.hideColumns(dgvDisco);
+            helpView.loadData(ref diskList,ref dgvDisco);
+            helpView.hideColumns(ref dgvDisco);
             cboCampo.Items.Add("Titulo");
             cboCampo.Items.Add("Cantidad de Canciones");
             cboCampo.Items.Add("Estilo");
@@ -43,8 +43,8 @@ namespace Discos
         {
             frmNewDisk newDisk = new frmNewDisk();
             newDisk.ShowDialog();            
-            helpView.loadData(diskList, dgvDisco);
-            helpView.hideColumns(dgvDisco);
+            helpView.loadData(ref diskList, ref dgvDisco);
+            
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -54,8 +54,8 @@ namespace Discos
                 select = (Disco)dgvDisco.CurrentRow.DataBoundItem;
                 frmNewDisk updateDisk = new frmNewDisk(select);
                 updateDisk.ShowDialog();
-                helpView.loadData(diskList, dgvDisco);
-                helpView.hideColumns(dgvDisco);
+                helpView.loadData(ref diskList, ref dgvDisco);
+                
             }
             else { MessageBox.Show("Seleccione un elemento de la lista"); }            
         }
@@ -74,8 +74,8 @@ namespace Discos
                             string rutaImagen = select.UrlImagenTapa;
                             discoNegocio.delete(select.Id);
                             helpView.eliminarImagenLocal(rutaImagen);
-                            helpView.loadData(diskList, dgvDisco);
-                            helpView.hideColumns(dgvDisco);
+                            helpView.loadData(ref diskList, ref dgvDisco);
+                            
                         }                                 
                     }
                     else { MessageBox.Show("Seleccione un elemento de la Lista"); }     
@@ -117,7 +117,8 @@ namespace Discos
             }
             dgvDisco.DataSource = null;
             dgvDisco.DataSource = listFilter;
-            helpView.hideColumns(dgvDisco);
+            helpView.hideColumns(ref dgvDisco);
+            
         }
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
