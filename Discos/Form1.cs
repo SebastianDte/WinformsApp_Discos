@@ -91,6 +91,8 @@ namespace Discos
             DiscoNegocio negocio = new DiscoNegocio();
             try
             {
+                if (helpView.validarFiltro(ref cboCampo,cboCriterio,txtFiltroAvanzado))
+                    return;
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
@@ -139,6 +141,8 @@ namespace Discos
                 cboCriterio.Items.Add("Contiene ");
             }
         }
+
+        
        
     }
 }

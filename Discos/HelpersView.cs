@@ -115,5 +115,44 @@ namespace Discos
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
         }
+        public bool validarFiltro(ref ComboBox cboCampo,ComboBox cboCriterio, TextBox txtFiltroAvanzado)
+        {
+            if (cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione el Campo");
+                return true;
+            }
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione el Criterio");
+                return true;
+            }
+            if (cboCampo.SelectedItem.ToString() == "Cantidad de Canciones")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Debes cargar el filtro para numericos");
+                    return true;
+                }
+                if (!(soloNumeros(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("Cantidad de Canciones solo admite Numeros");
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        public bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+            return true;
+        }
     }
 }
