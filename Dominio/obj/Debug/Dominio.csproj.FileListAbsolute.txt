@@ -16,3 +16,5 @@ C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.csproj.AssemblyRefer
 C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.dll
 C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.pdb
+C:\Users\Sebastian\Desktop\Discos\Dominio\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.csproj.CopyComplete

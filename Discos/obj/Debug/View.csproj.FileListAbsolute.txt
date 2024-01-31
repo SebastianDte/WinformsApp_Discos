@@ -30,3 +30,4 @@ C:\Users\wxyz2\Desktop\Discos\Discos\obj\Debug\View.csproj.CoreCompileInputs.cac
 C:\Users\wxyz2\Desktop\Discos\Discos\obj\Debug\View.csproj.CopyComplete
 C:\Users\wxyz2\Desktop\Discos\Discos\obj\Debug\Discos.exe
 C:\Users\wxyz2\Desktop\Discos\Discos\obj\Debug\Discos.pdb
+C:\Users\Sebastian\Desktop\Discos\Discos\bin\Debug\FontAwesome.Sharp.dll

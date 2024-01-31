@@ -25,3 +25,4 @@ C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\Business.csproj.CoreCompile
 C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\Business.csproj.CopyComplete
 C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\business.dll
 C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\business.pdb
+C:\Users\Sebastian\Desktop\Discos\business\bin\Debug\FontAwesome.Sharp.dll
