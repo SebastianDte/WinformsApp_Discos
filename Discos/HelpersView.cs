@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -144,15 +145,68 @@ namespace Discos
 
             return false;
         }
-
         public bool soloNumeros(string cadena)
         {
             foreach (char caracter in cadena)
             {
                 if (!(char.IsNumber(caracter)))
+                { 
                     return false;
+                }
             }
             return true;
+        }
+        public bool validacionTexto(ref TextBox txt, ErrorProvider errorProvider1)
+        {
+            string titulo = txt.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(titulo))
+            {
+                errorProvider1.SetError(txt, "El campo no puede estar vacío");
+                return false;
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+
+            // Verificar que el campo tenga más de 3 caracteres
+            if (titulo.Length < 3)
+            {
+                errorProvider1.SetError(txt, "Ingrese más de 3 caracteres");
+                return false;
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+
+            // Verificar que el campo contenga solo letras
+            //if (!Regex.IsMatch(titulo, @"^[a-zA-Z]+$"))
+            //{
+            //    errorProvider1.SetError(txt, "Ingrese solo letras");
+            //    return false;
+            //}
+            //else
+            //{
+            //    errorProvider1.Clear();
+            //}
+            return true;
+        }
+        public  bool ValidarNumerico(TextBox textBox, ErrorProvider errorProvider)
+        {
+            if (!int.TryParse(textBox.Text, out _))
+            {
+                errorProvider.SetError(textBox, "Por favor ingrese solo números en la cantidad de canciones.");
+                textBox.Focus();
+                return false;
+            }
+            else
+            {
+                errorProvider.Clear();
+                return true;
+            }
+            
         }
     }
 }

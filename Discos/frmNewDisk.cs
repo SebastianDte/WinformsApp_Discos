@@ -11,6 +11,7 @@ using dominio;
 using business;
 using System.IO;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace Discos
 {
@@ -43,39 +44,45 @@ namespace Discos
             {
                 if (disk == null)
                     disk = new Disco();
+
                 disk.Titulo = txtTitulo.Text;
                 disk.FechaDeLanzamiento = dtpFechaLanzamiento.Value;
+                if (!helpView.ValidarNumerico(txtCantCanciones, errorProvider1))
+                    return;
                 disk.CantidadDeCanciones = int.Parse(txtCantCanciones.Text);
                 disk.UrlImagenTapa = txtUrlImgTapa.Text;
                 disk.Estilo = (Estilo)cboEstilo.SelectedItem;
                 disk.TipoEdicion = (TipoEdicion)cboTipoEdicion.SelectedItem;
+
                 if (disk.Id != 0)
                 {
-                    discoNegocio.update(disk);
-                    if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
-                        helpView.SeleccionarYProcesarImagenlocal(archivo,destinoArchivo,destinoCarpeta);
-                     
-                    MessageBox.Show("Modificado exitosamente");
+                    if (helpView.validacionTexto(ref txtTitulo, errorProvider1))
+                    {
+                        if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
+                            helpView.SeleccionarYProcesarImagenlocal(archivo, destinoArchivo, destinoCarpeta);
+                        discoNegocio.update(disk);
+                        MessageBox.Show("Modificado exitosamente");
+                        Close();
+                    }     
                 }
-                    
                 else
                 {
-                    discoNegocio.add(disk);
-                    if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
-                        helpView.SeleccionarYProcesarImagenlocal(archivo, destinoArchivo, destinoCarpeta);
-
-                    MessageBox.Show("Agregado exisotsamente");
-                }                
-                    
-                    
-                Close();
-
+                    if (helpView.validacionTexto(ref txtTitulo,errorProvider1))
+                    {
+                        if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
+                            helpView.SeleccionarYProcesarImagenlocal(archivo, destinoArchivo, destinoCarpeta);
+                        discoNegocio.add(disk);
+                        MessageBox.Show("Agregado exisotsamente");
+                        Close();
+                    }
+                   
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
+        }  
         private void frmNewDisk_Load(object sender, EventArgs e)
         {
             EstiloNegocio estiloNegocio = new EstiloNegocio();
