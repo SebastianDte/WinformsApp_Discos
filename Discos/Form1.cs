@@ -18,37 +18,16 @@ namespace Discos
     {
         private HelpersView helpView = new HelpersView();
         private List<Disco> diskList;
-        
-
         public FrmDisco()
         {
             InitializeComponent();
-            customizeDesing(); 
-        } 
-
-        private void customizeDesing()
-        {
-            panelSubMenuDiscos.Visible = false;
-            panelSubMenuBuscar.Visible = false;
-        }
-        private void hideSubMenu()
-        {
-            if (panelSubMenuDiscos.Visible == true)
-                panelSubMenuDiscos.Visible = false;
-            if(panelSubMenuBuscar.Visible == true)
-                panelSubMenuBuscar.Visible=false;
+            helpView.customizeDesing(ref panelSubMenuDiscos,panelSubMenuBuscar); 
         }
 
-        private void showSubMenu(Panel submenu)
-        {
-            if (submenu.Visible == false)
-            {
-                hideSubMenu();
-                submenu.Visible = true;
-            }
-            else
-                submenu.Visible = false;
-        }
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         private void FrmDisco_Load(object sender, EventArgs e)
         {
             helpView.loadData(ref diskList,ref dgvDisco);
@@ -63,7 +42,6 @@ namespace Discos
             newDisk.ShowDialog();
             helpView.loadData(ref diskList, ref dgvDisco);
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             if (dgvDisco.CurrentRow != null)
@@ -77,7 +55,6 @@ namespace Discos
             }
             else { MessageBox.Show("Seleccione un elemento de la lista"); }
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             DiscoNegocio discoNegocio = new DiscoNegocio();
@@ -168,51 +145,39 @@ namespace Discos
                 cboCriterio.Items.Add("Contiene ");
             }
         }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             btnMaximizar.Visible = false;
             btnRestaurar.Visible = true;
         }
-
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             btnRestaurar.Visible = false;
             btnMaximizar.Visible = true;
         }
-
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void btnDiscosPanel_Click(object sender, EventArgs e)
         {
-            showSubMenu(panelSubMenuDiscos);
+            helpView.showSubMenu(ref panelSubMenuDiscos);
         }
-
         private void btnBuscarMenu_Click_1(object sender, EventArgs e)
         {
-            showSubMenu(panelSubMenuBuscar);
+            helpView.showSubMenu(ref panelSubMenuBuscar);
         }
-
-        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.dll", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd,int wMsg,int wParam,int lParam);
         private void panelContenedor_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle,0x112,0xf012,0);
+           ReleaseCapture();
+           SendMessage(this.Handle,0x112,0xf012,0);
         }
-
         private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

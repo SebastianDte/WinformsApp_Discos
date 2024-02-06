@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -207,6 +208,28 @@ namespace Discos
                 return true;
             }
             
+        }
+        public void customizeDesing(ref Panel panelSubMenuDiscos, Panel panelSubMenuBuscar)
+        {
+            panelSubMenuDiscos.Visible = false;
+            panelSubMenuBuscar.Visible = false;
+        }
+        public void hideSubMenu(ref Panel panelSubMenuDiscos, Panel panelSubMenuBuscar )
+        {
+            if (panelSubMenuDiscos.Visible == true)
+                panelSubMenuDiscos.Visible = false;
+            if (panelSubMenuBuscar.Visible == true)
+                panelSubMenuBuscar.Visible = false;
+        }
+        public void showSubMenu(ref Panel submenu)
+        {
+            if (submenu.Visible == false)
+            {
+                hideSubMenu(ref submenu,submenu);
+                submenu.Visible = true;
+            }
+            else
+                submenu.Visible = false;
         }
     }
 }
