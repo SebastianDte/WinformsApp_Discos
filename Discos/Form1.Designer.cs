@@ -54,6 +54,7 @@
             this.btnDiscosPanel = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.pxbLogo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxbDiscos)).BeginInit();
@@ -61,42 +62,44 @@
             this.menuLateral.SuspendLayout();
             this.panelSubMenuBuscar.SuspendLayout();
             this.panelSubMenuDiscos.SuspendLayout();
+            this.panelLogo.SuspendLayout();
             this.panelContenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pxbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDisco
             // 
-            this.dgvDisco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvDisco.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDisco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDisco.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvDisco.Location = new System.Drawing.Point(92, 288);
+            this.dgvDisco.Location = new System.Drawing.Point(15, 288);
             this.dgvDisco.MultiSelect = false;
             this.dgvDisco.Name = "dgvDisco";
             this.dgvDisco.RowHeadersWidth = 45;
             this.dgvDisco.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDisco.Size = new System.Drawing.Size(559, 248);
+            this.dgvDisco.Size = new System.Drawing.Size(680, 248);
             this.dgvDisco.TabIndex = 7;
             this.dgvDisco.SelectionChanged += new System.EventHandler(this.dgvDisco_SelectionChanged);
             // 
             // pxbDiscos
             // 
-            this.pxbDiscos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pxbDiscos.Location = new System.Drawing.Point(223, 80);
+            this.pxbDiscos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pxbDiscos.Location = new System.Drawing.Point(200, 66);
             this.pxbDiscos.Margin = new System.Windows.Forms.Padding(2);
             this.pxbDiscos.Name = "pxbDiscos";
-            this.pxbDiscos.Size = new System.Drawing.Size(271, 203);
+            this.pxbDiscos.Size = new System.Drawing.Size(326, 217);
             this.pxbDiscos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pxbDiscos.TabIndex = 1;
             this.pxbDiscos.TabStop = false;
             // 
             // lblFiltro
             // 
-            this.lblFiltro.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblFiltro.AutoSize = true;
             this.lblFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltro.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblFiltro.Location = new System.Drawing.Point(89, 243);
+            this.lblFiltro.Location = new System.Drawing.Point(12, 243);
             this.lblFiltro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFiltro.Name = "lblFiltro";
             this.lblFiltro.Size = new System.Drawing.Size(55, 18);
@@ -105,8 +108,8 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtFiltro.Location = new System.Drawing.Point(92, 263);
+            this.txtFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFiltro.Location = new System.Drawing.Point(15, 263);
             this.txtFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(117, 20);
@@ -201,6 +204,7 @@
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(907, 35);
             this.barraTitulo.TabIndex = 11;
+            this.barraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barraTitulo_MouseDown);
             // 
             // btnRestaurar
             // 
@@ -429,6 +433,7 @@
             // 
             // panelLogo
             // 
+            this.panelLogo.Controls.Add(this.pxbLogo);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
@@ -448,13 +453,23 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(707, 548);
             this.panelContenedor.TabIndex = 13;
+            this.panelContenedor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelContenedor_MouseDown);
+            // 
+            // pxbLogo
+            // 
+            this.pxbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pxbLogo.Location = new System.Drawing.Point(0, 0);
+            this.pxbLogo.Name = "pxbLogo";
+            this.pxbLogo.Size = new System.Drawing.Size(200, 76);
+            this.pxbLogo.TabIndex = 0;
+            this.pxbLogo.TabStop = false;
             // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 76);
+            this.panel1.Size = new System.Drawing.Size(707, 61);
             this.panel1.TabIndex = 8;
             // 
             // FrmDisco
@@ -479,8 +494,10 @@
             this.panelSubMenuBuscar.ResumeLayout(false);
             this.panelSubMenuBuscar.PerformLayout();
             this.panelSubMenuDiscos.ResumeLayout(false);
+            this.panelLogo.ResumeLayout(false);
             this.panelContenedor.ResumeLayout(false);
             this.panelContenedor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pxbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -513,6 +530,7 @@
         private FontAwesome.Sharp.IconButton btnAgregar;
         private System.Windows.Forms.Panel panelSubMenuBuscar;
         private FontAwesome.Sharp.IconButton btnBuscarMenu;
+        private System.Windows.Forms.PictureBox pxbLogo;
         private System.Windows.Forms.Panel panel1;
     }
 }

@@ -11,6 +11,7 @@ using dominio;
 using business;
 using System.IO;
 using System.Threading;
+using System.Runtime.InteropServices;
 namespace Discos
 {
     public partial class FrmDisco : Form
@@ -22,7 +23,7 @@ namespace Discos
         public FrmDisco()
         {
             InitializeComponent();
-            customizeDesing();
+            customizeDesing(); 
         } 
 
         private void customizeDesing()
@@ -202,7 +203,21 @@ namespace Discos
             showSubMenu(panelSubMenuBuscar);
         }
 
-       
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd,int wMsg,int wParam,int lParam);
+        private void panelContenedor_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle,0x112,0xf012,0);
+        }
+
+        private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
 
 }
