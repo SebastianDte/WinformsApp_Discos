@@ -128,21 +128,23 @@ namespace Discos
         }
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string option = cboCampo.SelectedItem.ToString();
-
-            if (option == "Cantidad de Canciones")
+            if (cboCampo.SelectedItem != null)
             {
-                cboCriterio.Items.Clear();
-                cboCriterio.Items.Add("Mayor a");
-                cboCriterio.Items.Add("Menor a");
-                cboCriterio.Items.Add("Igual a");
-            }
-            else
-            {
-                cboCriterio.Items.Clear();
-                cboCriterio.Items.Add("Comienza con ");
-                cboCriterio.Items.Add("Termina con ");
-                cboCriterio.Items.Add("Contiene ");
+                string option = cboCampo.SelectedItem.ToString();
+                if (option == "Cantidad de Canciones")
+                {
+                    cboCriterio.Items.Clear();
+                    cboCriterio.Items.Add("Mayor a");
+                    cboCriterio.Items.Add("Menor a");
+                    cboCriterio.Items.Add("Igual a");
+                }
+                else
+                {
+                    cboCriterio.Items.Clear();
+                    cboCriterio.Items.Add("Comienza con ");
+                    cboCriterio.Items.Add("Termina con ");
+                    cboCriterio.Items.Add("Contiene ");
+                }
             }
         }
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -182,6 +184,17 @@ namespace Discos
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            if (cboCampo.SelectedItem != null && cboCriterio.SelectedItem != null && txtFiltroAvanzado != null)
+            {
+                cboCampo.SelectedItem = null;
+                cboCriterio.SelectedItem = null;
+                txtFiltroAvanzado.Text = string.Empty;
+                helpView.loadData(ref diskList, ref dgvDisco);
+            }
+
         }
     }
 

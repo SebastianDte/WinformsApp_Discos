@@ -53,9 +53,10 @@
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.btnDiscosPanel = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.pxbLogo = new System.Windows.Forms.PictureBox();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxbDiscos)).BeginInit();
             this.barraTitulo.SuspendLayout();
@@ -63,8 +64,8 @@
             this.panelSubMenuBuscar.SuspendLayout();
             this.panelSubMenuDiscos.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            this.panelContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pxbLogo)).BeginInit();
+            this.panelContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDisco
@@ -118,16 +119,16 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.btnBuscar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscar.Location = new System.Drawing.Point(0, 116);
+            this.btnBuscar.Location = new System.Drawing.Point(101, 114);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(200, 34);
+            this.btnBuscar.Size = new System.Drawing.Size(97, 34);
             this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Aplicar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -296,6 +297,7 @@
             // 
             // panelSubMenuBuscar
             // 
+            this.panelSubMenuBuscar.Controls.Add(this.btnLimpiar);
             this.panelSubMenuBuscar.Controls.Add(this.cboCampo);
             this.panelSubMenuBuscar.Controls.Add(this.lblCampo);
             this.panelSubMenuBuscar.Controls.Add(this.txtFiltroAvanzado);
@@ -440,6 +442,15 @@
             this.panelLogo.Size = new System.Drawing.Size(200, 76);
             this.panelLogo.TabIndex = 0;
             // 
+            // pxbLogo
+            // 
+            this.pxbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pxbLogo.Location = new System.Drawing.Point(0, 0);
+            this.pxbLogo.Name = "pxbLogo";
+            this.pxbLogo.Size = new System.Drawing.Size(200, 76);
+            this.pxbLogo.TabIndex = 0;
+            this.pxbLogo.TabStop = false;
+            // 
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
@@ -455,15 +466,6 @@
             this.panelContenedor.TabIndex = 13;
             this.panelContenedor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelContenedor_MouseDown);
             // 
-            // pxbLogo
-            // 
-            this.pxbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pxbLogo.Location = new System.Drawing.Point(0, 0);
-            this.pxbLogo.Name = "pxbLogo";
-            this.pxbLogo.Size = new System.Drawing.Size(200, 76);
-            this.pxbLogo.TabIndex = 0;
-            this.pxbLogo.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -471,6 +473,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(707, 61);
             this.panel1.TabIndex = 8;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLimpiar.Location = new System.Drawing.Point(2, 114);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(97, 34);
+            this.btnLimpiar.TabIndex = 11;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // FrmDisco
             // 
@@ -495,9 +514,9 @@
             this.panelSubMenuBuscar.PerformLayout();
             this.panelSubMenuDiscos.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pxbLogo)).EndInit();
             this.panelContenedor.ResumeLayout(false);
             this.panelContenedor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pxbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -532,6 +551,7 @@
         private FontAwesome.Sharp.IconButton btnBuscarMenu;
         private System.Windows.Forms.PictureBox pxbLogo;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
 
