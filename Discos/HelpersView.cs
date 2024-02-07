@@ -196,18 +196,27 @@ namespace Discos
         }
         public  bool ValidarNumerico(TextBox textBox, ErrorProvider errorProvider)
         {
-            if (!int.TryParse(textBox.Text, out _))
+            if (string.IsNullOrWhiteSpace(textBox.Text))
             {
-                errorProvider.SetError(textBox, "Por favor ingrese solo números en la cantidad de canciones.");
+                errorProvider.SetError(textBox, "Este campo no puede estar vacío.");
                 textBox.Focus();
                 return false;
             }
             else
             {
-                errorProvider.Clear();
-                return true;
+                if (!int.TryParse(textBox.Text, out _))
+                {
+                    errorProvider.SetError(textBox, "Por favor ingrese solo números.");
+                    textBox.Focus();
+                    return false;
+                }
+                else
+                {
+                    errorProvider.Clear();
+                    return true;
+                }
             }
-            
+
         }
         public void customizeDesing(ref Panel panelSubMenuDiscos, Panel panelSubMenuBuscar)
         {

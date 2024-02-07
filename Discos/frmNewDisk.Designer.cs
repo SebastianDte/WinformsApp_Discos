@@ -96,6 +96,7 @@
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(153, 20);
             this.txtTitulo.TabIndex = 0;
+            this.txtTitulo.TextChanged += new System.EventHandler(this.txtTitulo_TextChanged);
             // 
             // txtCantCanciones
             // 
@@ -104,6 +105,7 @@
             this.txtCantCanciones.Name = "txtCantCanciones";
             this.txtCantCanciones.Size = new System.Drawing.Size(153, 20);
             this.txtCantCanciones.TabIndex = 2;
+            this.txtCantCanciones.TextChanged += new System.EventHandler(this.txtCantCanciones_TextChanged);
             // 
             // btnAceptar
             // 
@@ -142,7 +144,8 @@
             this.txtUrlImgTapa.Name = "txtUrlImgTapa";
             this.txtUrlImgTapa.Size = new System.Drawing.Size(153, 20);
             this.txtUrlImgTapa.TabIndex = 3;
-            this.txtUrlImgTapa.Leave += new System.EventHandler(this.txtUrlImgTapa_Leave);
+            this.txtUrlImgTapa.TextChanged += new System.EventHandler(this.txtUrlImgTapa_TextChanged);
+           
             // 
             // lblUrlImgTapa
             // 

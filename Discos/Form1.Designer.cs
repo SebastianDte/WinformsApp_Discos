@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDisco));
             this.dgvDisco = new System.Windows.Forms.DataGridView();
             this.pxbDiscos = new System.Windows.Forms.PictureBox();
             this.lblFiltro = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.menuLateral = new System.Windows.Forms.Panel();
             this.panelSubMenuBuscar = new System.Windows.Forms.Panel();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscarMenu = new FontAwesome.Sharp.IconButton();
             this.panelSubMenuDiscos = new System.Windows.Forms.Panel();
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
@@ -56,7 +58,6 @@
             this.pxbLogo = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxbDiscos)).BeginInit();
             this.barraTitulo.SuspendLayout();
@@ -311,6 +312,23 @@
             this.panelSubMenuBuscar.Size = new System.Drawing.Size(200, 150);
             this.panelSubMenuBuscar.TabIndex = 3;
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLimpiar.Location = new System.Drawing.Point(2, 114);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(97, 34);
+            this.btnLimpiar.TabIndex = 11;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // btnBuscarMenu
             // 
             this.btnBuscarMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
@@ -445,9 +463,11 @@
             // pxbLogo
             // 
             this.pxbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pxbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pxbLogo.Image")));
             this.pxbLogo.Location = new System.Drawing.Point(0, 0);
             this.pxbLogo.Name = "pxbLogo";
             this.pxbLogo.Size = new System.Drawing.Size(200, 76);
+            this.pxbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pxbLogo.TabIndex = 0;
             this.pxbLogo.TabStop = false;
             // 
@@ -473,23 +493,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(707, 61);
             this.panel1.TabIndex = 8;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.btnLimpiar.FlatAppearance.BorderSize = 0;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLimpiar.Location = new System.Drawing.Point(2, 114);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(97, 34);
-            this.btnLimpiar.TabIndex = 11;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = false;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // FrmDisco
             // 

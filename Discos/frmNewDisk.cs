@@ -64,24 +64,24 @@ namespace Discos
                 {
                     if (helpView.validacionTexto(ref txtTitulo, errorProvider1))
                     {
+
                         if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
                             helpView.SeleccionarYProcesarImagenlocal(archivo, destinoArchivo, destinoCarpeta);
                         discoNegocio.update(disk);
                         MessageBox.Show("Modificado exitosamente");
                         Close();
-                    }     
+                    }  
                 }
                 else
                 {
-                    if (helpView.validacionTexto(ref txtTitulo,errorProvider1))
+                    if(helpView.validacionTexto(ref txtTitulo,errorProvider1))
                     {
                         if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
                             helpView.SeleccionarYProcesarImagenlocal(archivo, destinoArchivo, destinoCarpeta);
                         discoNegocio.add(disk);
-                        MessageBox.Show("Agregado exisotsamente");
+                        MessageBox.Show("Agregado exitosamente");
                         Close();
-                    }
-                   
+                    }                  
                 }
             }
             catch (Exception ex)
@@ -117,12 +117,7 @@ namespace Discos
             {
                 throw ex;
             }
-        }
-        private void txtUrlImgTapa_Leave(object sender, EventArgs e)
-        {
-            helpView.uploadImage(txtUrlImgTapa.Text, pxbDiscos);
-
-        }
+        }   
         private void BtnAgregarImagen_Click(object sender, EventArgs e)
         {
             OpenFileDialog archivoDialog = new OpenFileDialog();
@@ -144,6 +139,20 @@ namespace Discos
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void txtTitulo_TextChanged(object sender, EventArgs e)
+        {
+            helpView.validacionTexto(ref txtTitulo,errorProvider1);
+        }
+        private void txtCantCanciones_TextChanged(object sender, EventArgs e)
+        {
+            if (!helpView.ValidarNumerico(txtCantCanciones, errorProvider1))
+                return;
+
+        }
+        private void txtUrlImgTapa_TextChanged(object sender, EventArgs e)
+        {
+            helpView.uploadImage(txtUrlImgTapa.Text, pxbDiscos);
         }
     }
 }
