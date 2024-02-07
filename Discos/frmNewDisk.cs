@@ -154,5 +154,7 @@ namespace Discos
         {
             helpView.uploadImage(txtUrlImgTapa.Text, pxbDiscos);
         }
+
+       
     }
 }

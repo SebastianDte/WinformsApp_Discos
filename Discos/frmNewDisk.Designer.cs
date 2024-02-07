@@ -145,7 +145,6 @@
             this.txtUrlImgTapa.Size = new System.Drawing.Size(153, 20);
             this.txtUrlImgTapa.TabIndex = 3;
             this.txtUrlImgTapa.TextChanged += new System.EventHandler(this.txtUrlImgTapa_TextChanged);
-           
             // 
             // lblUrlImgTapa
             // 
@@ -166,6 +165,7 @@
             this.dtpFechaLanzamiento.Name = "dtpFechaLanzamiento";
             this.dtpFechaLanzamiento.Size = new System.Drawing.Size(153, 20);
             this.dtpFechaLanzamiento.TabIndex = 1;
+            this.dtpFechaLanzamiento.Value = new System.DateTime(2024, 2, 7, 0, 0, 0, 0);
             // 
             // label1
             // 
