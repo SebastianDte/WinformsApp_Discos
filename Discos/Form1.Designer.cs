@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDisco));
             this.dgvDisco = new System.Windows.Forms.DataGridView();
             this.pxbDiscos = new System.Windows.Forms.PictureBox();
@@ -73,8 +74,19 @@
             // 
             this.dgvDisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvDisco.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDisco.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.dgvDisco.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDisco.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDisco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDisco.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvDisco.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDisco.Location = new System.Drawing.Point(15, 288);
             this.dgvDisco.MultiSelect = false;
             this.dgvDisco.Name = "dgvDisco";
@@ -104,7 +116,7 @@
             this.lblFiltro.Location = new System.Drawing.Point(12, 243);
             this.lblFiltro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(55, 18);
+            this.lblFiltro.Size = new System.Drawing.Size(52, 17);
             this.lblFiltro.TabIndex = 5;
             this.lblFiltro.Text = "Buscar";
             // 
@@ -142,7 +154,7 @@
             this.lblCampo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCampo.Location = new System.Drawing.Point(6, 25);
             this.lblCampo.Name = "lblCampo";
-            this.lblCampo.Size = new System.Drawing.Size(52, 17);
+            this.lblCampo.Size = new System.Drawing.Size(47, 15);
             this.lblCampo.TabIndex = 0;
             this.lblCampo.Text = "Campo";
             // 
@@ -153,7 +165,7 @@
             this.lblCriterio.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCriterio.Location = new System.Drawing.Point(6, 52);
             this.lblCriterio.Name = "lblCriterio";
-            this.lblCriterio.Size = new System.Drawing.Size(53, 17);
+            this.lblCriterio.Size = new System.Drawing.Size(46, 15);
             this.lblCriterio.TabIndex = 2;
             this.lblCriterio.Text = "Criterio";
             // 
@@ -164,7 +176,7 @@
             this.lblFiltroAvanzado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblFiltroAvanzado.Location = new System.Drawing.Point(16, 79);
             this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
-            this.lblFiltroAvanzado.Size = new System.Drawing.Size(39, 17);
+            this.lblFiltroAvanzado.Size = new System.Drawing.Size(34, 15);
             this.lblFiltroAvanzado.TabIndex = 10;
             this.lblFiltroAvanzado.Text = "Filtro";
             // 

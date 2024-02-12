@@ -26,3 +26,13 @@ C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\Business.csproj.CopyComplet
 C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\business.dll
 C:\Users\Sebastian\Desktop\Discos\business\obj\Debug\business.pdb
 C:\Users\Sebastian\Desktop\Discos\business\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\bin\Debug\business.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\bin\Debug\business.pdb
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\bin\Debug\Dominio.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\bin\Debug\Dominio.pdb
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\obj\Debug\Business.csproj.AssemblyReference.cache
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\obj\Debug\business.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\business\obj\Debug\business.pdb

@@ -10,8 +10,11 @@ namespace dominio
     public class Disco
     {
         public int Id { get; set; }
+        [DisplayName("Artista")]
+        public string Artista { get; set; }
+        [DisplayName("Título")]
         public string Titulo { get; set; }
-        [DisplayName("Fecha de Lanzmaiento")]
+        [DisplayName("Fecha de Lanzamiento")]
         public DateTime FechaDeLanzamiento { get; set; }
         [DisplayName("Cantidad de Canciones")]
         public int CantidadDeCanciones { get; set; }

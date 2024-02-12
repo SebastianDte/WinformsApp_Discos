@@ -26,13 +26,14 @@ namespace Discos
         public frmNewDisk()
         {
             InitializeComponent();
+            lblBarraTitutlo.Text = "Agregar Disco";
 
         }
         public frmNewDisk(Disco select)
         {
             InitializeComponent();
             this.disk = select;
-            Text = "Modificar Disco";
+            lblBarraTitutlo.Text = "Modificar Disco";
         }
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -50,7 +51,7 @@ namespace Discos
             {
                 if (disk == null)
                     disk = new Disco();
-
+                disk.Artista = txtArtista.Text;
                 disk.Titulo = txtTitulo.Text;
                 disk.FechaDeLanzamiento = dtpFechaLanzamiento.Value;
                 if (!helpView.ValidarNumerico(txtCantCanciones, errorProvider1))
@@ -62,7 +63,7 @@ namespace Discos
 
                 if (disk.Id != 0)
                 {
-                    if (helpView.validacionTexto(ref txtTitulo, errorProvider1))
+                    if (helpView.validacionTexto(ref txtTitulo, errorProvider1) && helpView.validacionTexto(ref txtArtista, errorProvider1))
                     {
 
                         if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
@@ -74,7 +75,7 @@ namespace Discos
                 }
                 else
                 {
-                    if(helpView.validacionTexto(ref txtTitulo,errorProvider1))
+                    if(helpView.validacionTexto(ref txtTitulo,errorProvider1) && helpView.validacionTexto(ref txtArtista, errorProvider1))
                     {
                         if (helpView.verificarExitenciaDeImagen(txtUrlImgTapa))
                             helpView.SeleccionarYProcesarImagenlocal(archivo, destinoArchivo, destinoCarpeta);
@@ -104,6 +105,7 @@ namespace Discos
                 cboTipoEdicion.DisplayMember = "Descripcion";
                 if (disk != null)
                 {
+                    txtArtista.Text = disk.Artista;
                     txtTitulo.Text = disk.Titulo;
                     dtpFechaLanzamiento.Value = disk.FechaDeLanzamiento;
                     txtCantCanciones.Text = disk.CantidadDeCanciones.ToString();
@@ -117,20 +119,7 @@ namespace Discos
             {
                 throw ex;
             }
-        }   
-        private void BtnAgregarImagen_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog archivoDialog = new OpenFileDialog();
-            archivoDialog.Filter = "jpg|*.jpg|png|*.png";
-            if (archivoDialog.ShowDialog() == DialogResult.OK)
-            {
-                archivo = archivoDialog; 
-                destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
-                destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
-                txtUrlImgTapa.Text = destinoArchivo;
-                helpView.uploadImage(archivo.FileName, pxbDiscos);
-            }
-        }
+        }       
         private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -155,6 +144,23 @@ namespace Discos
             helpView.uploadImage(txtUrlImgTapa.Text, pxbDiscos);
         }
 
-       
+        private void btnImgLocal_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog archivoDialog = new OpenFileDialog();
+            archivoDialog.Filter = "jpg|*.jpg|png|*.png";
+            if (archivoDialog.ShowDialog() == DialogResult.OK)
+            {
+                archivo = archivoDialog;
+                destinoCarpeta = ConfigurationManager.AppSettings["Disk-Img"];
+                destinoArchivo = Path.Combine(destinoCarpeta, archivo.SafeFileName);
+                txtUrlImgTapa.Text = destinoArchivo;
+                helpView.uploadImage(archivo.FileName, pxbDiscos);
+            }
+        }
+
+        private void txtArtista_TextChanged(object sender, EventArgs e)
+        {
+            helpView.validacionTexto(ref txtArtista, errorProvider1);
+        }
     }
 }

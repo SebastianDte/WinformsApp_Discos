@@ -32,6 +32,7 @@ namespace Discos
         {
             helpView.loadData(ref diskList,ref dgvDisco);
             helpView.hideColumns(ref dgvDisco);
+            cboCampo.Items.Add("Artista");
             cboCampo.Items.Add("Titulo");
             cboCampo.Items.Add("Cantidad de Canciones");
             cboCampo.Items.Add("Estilo");
@@ -51,7 +52,6 @@ namespace Discos
                 frmNewDisk updateDisk = new frmNewDisk(select);
                 updateDisk.ShowDialog();
                 helpView.loadData(ref diskList, ref dgvDisco);
-
             }
             else { MessageBox.Show("Seleccione un elemento de la lista"); }
         }
@@ -100,7 +100,7 @@ namespace Discos
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
-                dgvDisco.DataSource = negocio.filtrar(campo, criterio, filtro);
+                dgvDisco.DataSource = negocio.filtrar( campo, criterio, filtro);
 
             }
             catch (Exception ex)
@@ -123,8 +123,7 @@ namespace Discos
             }
             dgvDisco.DataSource = null;
             dgvDisco.DataSource = listFilter;
-            helpView.hideColumns(ref dgvDisco);
-            
+            helpView.hideColumns(ref dgvDisco);            
         }
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -141,9 +140,9 @@ namespace Discos
                 else
                 {
                     cboCriterio.Items.Clear();
-                    cboCriterio.Items.Add("Comienza con ");
-                    cboCriterio.Items.Add("Termina con ");
-                    cboCriterio.Items.Add("Contiene ");
+                    cboCriterio.Items.Add("Comienza con");
+                    cboCriterio.Items.Add("Termina con");
+                    cboCriterio.Items.Add("Contiene");
                 }
             }
         }
@@ -194,12 +193,8 @@ namespace Discos
                 txtFiltroAvanzado.Text = string.Empty;
                 helpView.loadData(ref diskList, ref dgvDisco);
             }
-
-        }
-
-        
+        }        
     }
-
 }
                             
                                 

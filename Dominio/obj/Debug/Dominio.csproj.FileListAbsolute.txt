@@ -18,3 +18,11 @@ C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.dll
 C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.pdb
 C:\Users\Sebastian\Desktop\Discos\Dominio\bin\Debug\FontAwesome.Sharp.dll
 C:\Users\Sebastian\Desktop\Discos\Dominio\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\bin\Debug\Dominio.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\bin\Debug\Dominio.pdb
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\obj\Debug\Dominio.dll
+C:\Users\wxyz2\OneDrive\Documentos\Discos\Discos\Dominio\obj\Debug\Dominio.pdb
