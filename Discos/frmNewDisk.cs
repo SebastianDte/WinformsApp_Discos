@@ -138,11 +138,7 @@ namespace Discos
             if (!helpView.ValidarNumerico(txtCantCanciones, errorProvider1))
                 return;
 
-        }
-        private void txtUrlImgTapa_TextChanged(object sender, EventArgs e)
-        {
-            helpView.uploadImage(txtUrlImgTapa.Text, pxbDiscos);
-        }
+        }        
 
         private void btnImgLocal_Click(object sender, EventArgs e)
         {
@@ -161,6 +157,11 @@ namespace Discos
         private void txtArtista_TextChanged(object sender, EventArgs e)
         {
             helpView.validacionTexto(ref txtArtista, errorProvider1);
+        }
+
+        private void txtUrlImgTapa_Leave(object sender, EventArgs e)
+        {
+            helpView.uploadImage(txtUrlImgTapa.Text, pxbDiscos);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Discos
         public FrmDisco()
         {
             InitializeComponent();
-            helpView.customizeDesing(ref panelSubMenuDiscos,panelSubMenuBuscar); 
+            helpView.customizeDesing(ref panelSubMenuDiscos, panelSubMenuBuscar);
         }
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -30,7 +30,7 @@ namespace Discos
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         private void FrmDisco_Load(object sender, EventArgs e)
         {
-            helpView.loadData(ref diskList,ref dgvDisco);
+            helpView.loadData(ref diskList, ref dgvDisco);
             helpView.hideColumns(ref dgvDisco);
             cboCampo.Items.Add("Artista");
             cboCampo.Items.Add("Titulo");
@@ -84,23 +84,23 @@ namespace Discos
         }
         private void dgvDisco_SelectionChanged(object sender, EventArgs e)
         {
-            if(dgvDisco.CurrentRow != null)
+            if (dgvDisco.CurrentRow != null)
             {
                 Disco selected = (Disco)dgvDisco.CurrentRow.DataBoundItem;
-                helpView.uploadImage(selected.UrlImagenTapa,pxbDiscos);
-            }               
+                helpView.uploadImage(selected.UrlImagenTapa, pxbDiscos);
+            }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             DiscoNegocio negocio = new DiscoNegocio();
             try
             {
-                if (helpView.validarFiltro(ref cboCampo,cboCriterio,txtFiltroAvanzado))
+                if (helpView.validarFiltro(ref cboCampo, cboCriterio, txtFiltroAvanzado))
                     return;
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
-                dgvDisco.DataSource = negocio.filtrar( campo, criterio, filtro);
+                dgvDisco.DataSource = negocio.filtrar(campo, criterio, filtro);
 
             }
             catch (Exception ex)
@@ -112,10 +112,13 @@ namespace Discos
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Disco> listFilter;
-            string filter = txtFiltro.Text;
+            string filter = txtFiltro.Text.ToUpper();
             if (filter.Length >= 2)
             {
-                listFilter = diskList.FindAll(x => x.Titulo.ToUpper().Contains(filter.ToUpper()));
+                listFilter = diskList.FindAll(x =>
+                x.Titulo.ToUpper().Contains(filter) || 
+                x.Artista.ToUpper().Contains(filter) 
+                );
             }
             else
             {
@@ -123,7 +126,7 @@ namespace Discos
             }
             dgvDisco.DataSource = null;
             dgvDisco.DataSource = listFilter;
-            helpView.hideColumns(ref dgvDisco);            
+            helpView.hideColumns(ref dgvDisco);
         }
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -176,8 +179,8 @@ namespace Discos
         }
         private void panelContenedor_MouseDown(object sender, MouseEventArgs e)
         {
-           ReleaseCapture();
-           SendMessage(this.Handle,0x112,0xf012,0);
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
         private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
@@ -193,11 +196,11 @@ namespace Discos
                 txtFiltroAvanzado.Text = string.Empty;
                 helpView.loadData(ref diskList, ref dgvDisco);
             }
-        }        
+        }
     }
 }
-                            
-                                
+
+
 
 
 
